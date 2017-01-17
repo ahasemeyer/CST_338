@@ -12,11 +12,13 @@ public class Module2
 	public static void main(String[] args)
 	{
 		TripleString test = new TripleString();
-		
-		test.getBet();
-      System.out.println(test.getPayMultiplier(test.pull()));
-      System.out.println(test);
+		int winnings = 0;
       
+		int firstBet = test.getBet();
+      TripleString firstPull = test.pull();
+      winnings = firstBet * firstPull.getPayMultiplier(firstPull);
+      System.out.println(winnings);
+      test.display(firstPull, winnings);
       
       
 	}
@@ -41,10 +43,14 @@ class TripleString
    string3 = "";
    }
    
+   
+   
    private static boolean validString(String str)
    {
 	   return (str.length() < MAX_LEN);
    }
+   
+   
    
    public static int getBet()
    {
@@ -66,6 +72,8 @@ class TripleString
 	  }
 	  return betAmount;
    }
+   
+   
    
    public static void setFirstString()
    {
@@ -89,6 +97,8 @@ class TripleString
 	  }
    }
    
+   
+   
       public static void setSecondString()
    {
       double randomNumber = (Math.random()*100);
@@ -110,6 +120,8 @@ class TripleString
 		  string2 = "7";
 	  }
    }
+   
+   
    
       public static void setThirdString()
    {
@@ -133,6 +145,8 @@ class TripleString
 	  }
    }
    
+   
+   
    public static String getFirstString()
    {   
       return string1;
@@ -153,6 +167,8 @@ class TripleString
 	   return(getFirstString() + " " + getSecondString() + " " + getThirdString());
    }
    
+   
+   
    public static TripleString pull()
    {   
 	   TripleString pullString = new TripleString();
@@ -163,6 +179,8 @@ class TripleString
 	   return pullString;
 	   
    }
+   
+   
    
    public static int getPayMultiplier(TripleString thePull)
    {
@@ -196,5 +214,13 @@ class TripleString
 		   payMultiplier = 0;
 	   }
 	   return payMultiplier;
+   }
+   
+   
+   
+   public static void display(TripleString thePull, int winnings)
+   {
+      System.out.println(thePull.getFirstString() + " " + thePull.getSecondString() + " " + thePull.getThirdString());
+      System.out.println("You won " + winnings);
    }
 }
