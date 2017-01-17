@@ -11,7 +11,7 @@ public class Module2
 {
 	public static void main(String[] args)
 	{
-	TripleString.getBet();
+	//TripleString.getBet();
 	//TripleString.Test();
 	}
 }
@@ -49,7 +49,7 @@ class TripleString
       int betAmount = keyboard.nextInt();
 	  if (betAmount == 0)
 	  {
-		  System.out.print("Thank you for playing at the Casino!");
+         System.out.print("Thank you for playing at the Casino!");
 	  }
 	  else
 	  {
@@ -64,15 +64,7 @@ class TripleString
    
    public static void Test()
    {
-      String testString = "less thanalkdfsjklasdjfklajsdlkfjklsdf 20";
-	  if (validString(testString))
-	  {
-		  System.out.print("IT wokrs");
-	  }
-	  else
-	  {
-		  System.out.print("fucked up0");
-	  }
+	   //Test method
    }
 }
 
