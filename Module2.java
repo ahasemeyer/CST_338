@@ -11,15 +11,13 @@ public class Module2
 {
 	public static void main(String[] args)
 	{
-	//TripleString.getBet();
-	//TripleString.Test();
-	//TripleString.pull();
-	TripleString.setFirstString();
-	TripleString.setSecondString();
-	TripleString.setThirdString();
-	//TripleString.getFirstString();
-	
-	System.out.print(TripleString.getFirstString() + " " + TripleString.getSecondString() + " " + TripleString.getThirdString());
+		do
+		{
+		   TripleString.getBet();
+		   System.out.println("whirrrrrr .... and your pull is ... ");
+		   TripleString.pull();
+		   System.out.println(TripleString.pull());
+		} while (TripleString.getBet() != 0);
 	}
 }
 
@@ -67,13 +65,6 @@ class TripleString
 	  }
 	  return betAmount;
    }
-   
-   /*public TripleString pull()
-   {
-	   //blank so far
-	   return;
-   }
-   */
    
    public static void setFirstString()
    {
@@ -133,7 +124,7 @@ class TripleString
 	  }
 	  else if ((randomNumber > 75) && (randomNumber <= 87.5))
 	  {
-		  string3 = "space";
+		  string3 = "(space)";
 	  }
 	  else
 	  {
@@ -143,22 +134,38 @@ class TripleString
    
    public static String getFirstString()
    {   
-	   return string1;
+      return string1;
    }
    
-      public static String getSecondString()
+   public static String getSecondString()
    {   
-	   return string2;
+      return string2;
    }
    
-      public static String getThirdString()
+   public static String getThirdString()
    {   
-	   return string3;
+      return string3;
    }
    
    public static void Test()
    {
 	   //Test method
+   }
+   
+   public String toString()
+   {
+	   return(getFirstString() + " " + getSecondString() + " " + getThirdString());
+   }
+   
+   public static TripleString pull()
+   {   
+	   TripleString testTriple = new TripleString();
+	   testTriple.setFirstString();
+	   testTriple.setSecondString();
+	   testTriple.setThirdString();
+	
+	   return testTriple;
+	   
    }
 }
 
