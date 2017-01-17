@@ -11,14 +11,26 @@ public class Module2
 {
 	public static void main(String[] args)
 	{
-		TripleString test = new TripleString();
 		int winnings = 0;
-      
-		int firstBet = test.getBet();
-      TripleString firstPull = test.pull();
-      winnings = firstBet * firstPull.getPayMultiplier(firstPull);
-      System.out.println(winnings);
-      test.display(firstPull, winnings);
+		
+		while(true)
+		{
+			
+			TripleString test = new TripleString();
+			
+			int firstBet = test.getBet();
+			if (firstBet == 0)
+			{
+				break;
+			}
+				
+	        TripleString firstPull = test.pull();
+	        winnings = firstBet * firstPull.getPayMultiplier(firstPull);
+	        
+	        System.out.println(winnings);
+	        test.display(firstPull, winnings);
+	        
+		}
       
       
 	}
