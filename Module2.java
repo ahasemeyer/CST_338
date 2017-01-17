@@ -72,6 +72,14 @@ class TripleString
 	  else
 	  {
 		  System.out.print("fucked up0");
+		  System.out.print("fucked up0");
+		  System.out.print("fucked up0");
+		  System.out.print("fucked up0");
+		  System.out.print("fucked up0");
 	  }
    }
 }
+
+
+
+///GIT TESTTESTSETSETSDTSDT
