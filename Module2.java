@@ -89,7 +89,7 @@ class TripleString
 	  }
 	  else if ((randomNumber > 75) && (randomNumber <= 87.5))
 	  {
-		  string1 = "space";
+		  string1 = "(space)";
 	  }
 	  else
 	  {
@@ -113,7 +113,7 @@ class TripleString
 	  }
 	  else if ((randomNumber > 75) && (randomNumber <= 87.5))
 	  {
-		  string2 = "space";
+		  string2 = "(space)";
 	  }
 	  else
 	  {
