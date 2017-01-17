@@ -15,7 +15,11 @@ public class Module2
 	//TripleString.Test();
 	//TripleString.pull();
 	TripleString.setFirstString();
-	TripleString.getFirstString();
+	TripleString.setSecondString();
+	TripleString.setThirdString();
+	//TripleString.getFirstString();
+	
+	System.out.print(TripleString.getFirstString() + " " + TripleString.getSecondString() + " " + TripleString.getThirdString());
 	}
 }
 
@@ -93,10 +97,63 @@ class TripleString
 	  }
    }
    
+      public static void setSecondString()
+   {
+      double randomNumber = (Math.random()*100);
+	  
+	  if ((randomNumber > 0) && (randomNumber <= 50))
+	  {
+		  string2 = "BAR";
+	  }
+	  else if ((randomNumber > 50) && (randomNumber <= 75))
+	  {
+		 string2 = "cherries"; 
+	  }
+	  else if ((randomNumber > 75) && (randomNumber <= 87.5))
+	  {
+		  string2 = "space";
+	  }
+	  else
+	  {
+		  string2 = "7";
+	  }
+   }
+   
+      public static void setThirdString()
+   {
+      double randomNumber = (Math.random()*100);
+	  
+	  if ((randomNumber > 0) && (randomNumber <= 50))
+	  {
+		  string3 = "BAR";
+	  }
+	  else if ((randomNumber > 50) && (randomNumber <= 75))
+	  {
+		 string3 = "cherries"; 
+	  }
+	  else if ((randomNumber > 75) && (randomNumber <= 87.5))
+	  {
+		  string3 = "space";
+	  }
+	  else
+	  {
+		  string3 = "7";
+	  }
+   }
+   
    public static String getFirstString()
    {   
-	   System.out.print(string1);
 	   return string1;
+   }
+   
+      public static String getSecondString()
+   {   
+	   return string2;
+   }
+   
+      public static String getThirdString()
+   {   
+	   return string3;
    }
    
    public static void Test()
