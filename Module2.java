@@ -13,6 +13,9 @@ public class Module2
 	{
 	//TripleString.getBet();
 	//TripleString.Test();
+	//TripleString.pull();
+	TripleString.setFirstString();
+	TripleString.getFirstString();
 	}
 }
 
@@ -24,13 +27,12 @@ class TripleString
    public static int[] pullWinnings = new int[MAX_PULLS];
    public static int numPulls = 0;
 	
-   private String string1;
-   private String string2;
-   private String string3;
+   private static String string1;
+   private static String string2;
+   private static String string3;
    
    public TripleString()
    {
-   pullWinnings[0] = 0;
    string1 = "";
    string2 = "";
    string3 = "";
@@ -54,12 +56,47 @@ class TripleString
 	  else
 	  {
          while ((betAmount < 0) || (betAmount > 100))
-            {
-               System.out.println("Enter a between 0 - 100.");
-               betAmount = keyboard.nextInt();
-            }
+         {
+            System.out.println("Enter a between 0 - 100.");
+            betAmount = keyboard.nextInt();
+         }
 	  }
 	  return betAmount;
+   }
+   
+   /*public TripleString pull()
+   {
+	   //blank so far
+	   return;
+   }
+   */
+   
+   public static void setFirstString()
+   {
+      double randomNumber = (Math.random()*100);
+	  
+	  if ((randomNumber > 0) && (randomNumber <= 50))
+	  {
+		  string1 = "BAR";
+	  }
+	  else if ((randomNumber > 50) && (randomNumber <= 75))
+	  {
+		 string1 = "cherries"; 
+	  }
+	  else if ((randomNumber > 75) && (randomNumber <= 87.5))
+	  {
+		  string1 = "space";
+	  }
+	  else
+	  {
+		  string1 = "7";
+	  }
+   }
+   
+   public static String getFirstString()
+   {   
+	   System.out.print(string1);
+	   return string1;
    }
    
    public static void Test()
