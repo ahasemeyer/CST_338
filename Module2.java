@@ -13,16 +13,12 @@ public class Module2
 	{
 		TripleString test = new TripleString();
 		
-		TripleString.getPayMultiplier(test.pull());
-		
-		/*do
-		{
-		   TripleString.getBet();
-		   System.out.println("whirrrrrr .... and your pull is ... ");
-		   TripleString.pull();
-		   System.out.println(TripleString.pull());
-		} while(TripleString.getBet() != 0);
-		*/
+		test.getBet();
+      System.out.println(test.getPayMultiplier(test.pull()));
+      System.out.println(test);
+      
+      
+      
 	}
 }
 
@@ -170,35 +166,35 @@ class TripleString
    
    public static int getPayMultiplier(TripleString thePull)
    {
-	   int pay = 15;
+	   int payMultiplier;
 	   if ((thePull.getFirstString().equals("cherries")) && (!thePull.getSecondString().equals("cherries")))
 	   {
-		   System.out.println("x5 " + thePull);
+		   payMultiplier = 5;
 	   }
-	   else if ((thePull.getFirstString().equals("cherries")) && (thePull.getSecondString().equals("cherries")))
+	   else if ((thePull.getFirstString().equals("cherries")) && (thePull.getSecondString().equals("cherries"))
+         && (!thePull.getThirdString().equals("cherries")))
 	   {
-		   System.out.println("x15 " + thePull);
+		   payMultiplier = 15;
 	   }
-	   else if ((thePull.getFirstString().equals("cherries")) && (thePull.getSecondString().equals("cherries")) && (thePull.getThirdString().equals("cherries")))
+	   else if ((thePull.getFirstString().equals("cherries")) && (thePull.getSecondString().equals("cherries")) 
+         && (thePull.getThirdString().equals("cherries")))
 	   {
-		   System.out.println("x30 " + thePull);		   
+		   payMultiplier = 30;		   
 	   }
-	   else if ((thePull.getFirstString().equals("BAR")) && (thePull.getSecondString().equals("BAR")) && (thePull.getThirdString().equals("BAR")))
+	   else if ((thePull.getFirstString().equals("BAR")) && (thePull.getSecondString().equals("BAR")) 
+         && (thePull.getThirdString().equals("BAR")))
 	   {
-		   System.out.println("x50 " + thePull);			   
+		   payMultiplier = 50;			   
 	   }
-	   else if ((thePull.getFirstString().equals("7")) && (thePull.getSecondString().equals("7")) && (thePull.getThirdString().equals("7")))
+	   else if ((thePull.getFirstString().equals("7")) && (thePull.getSecondString().equals("7")) 
+         && (thePull.getThirdString().equals("7")))
 	   {
-		   System.out.println("x100 " + thePull);		   
+		   payMultiplier = 100;		   
 	   }
 	   else
 	   {
-		   System.out.println("Sorry you lose" + thePull);
+		   payMultiplier = 0;
 	   }
-	   return pay;
+	   return payMultiplier;
    }
 }
-
-
-
-///GIT update test
