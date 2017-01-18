@@ -88,7 +88,7 @@ class TripleString
    {
 	   for (int i = 0; i < count; i++)
 	   {
-		   System.out.print(pullWinnings[i] + ", ");
+		   System.out.print(pullWinnings[i] + " ");
 	   }
    }
    
