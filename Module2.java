@@ -35,9 +35,9 @@ public class Module2
 			
 			TripleString userPull = slotMachine.pull();
 			
-			slotMachine.display(userPull);
+			slotMachine.display(userPull, userBet);
 			
-			System.out.println("You won $" + slotMachine.getUserWinnings(userPull, userBet) + " dollars!");
+			
 			System.out.println("--------------------------------------------------------");
 	        
 		}
@@ -72,8 +72,6 @@ class TripleString
 	   return (str.length() < MAX_LEN);
    }
    
-   
-   
    public static int getBet()
    {
       Scanner keyboard = new Scanner(System.in);
@@ -83,8 +81,6 @@ class TripleString
 
 	  return betAmount;
    }
-   
-   
    
    public static void setFirstString()
    {
@@ -107,9 +103,7 @@ class TripleString
 		  string1 = "7";
 	  }
    }
-   
-   
-   
+
       public static void setSecondString()
    {
       double randomNumber = (Math.random()*100);
@@ -131,8 +125,6 @@ class TripleString
 		  string2 = "7";
 	  }
    }
-   
-   
    
       public static void setThirdString()
    {
@@ -156,8 +148,6 @@ class TripleString
 	  }
    }
    
-   
-   
    public static String getFirstString()
    {   
       return string1;
@@ -178,8 +168,6 @@ class TripleString
 	   return(getFirstString() + " " + getSecondString() + " " + getThirdString());
    }
    
-   
-   
    public static TripleString pull()
    {   
 	   TripleString pullString = new TripleString();
@@ -190,8 +178,6 @@ class TripleString
 	   return pullString;
 	   
    }
-   
-   
    
    public static int getPayMultiplier(TripleString thePull)
    {
@@ -232,8 +218,9 @@ class TripleString
 	   return (userBet * getPayMultiplier(userPull));
    }
    
-   public static void display(TripleString thePull)
+   public static void display(TripleString userPull, int userBet)
    {
-      System.out.println("| " + thePull.getFirstString() + " | " + thePull.getSecondString() + " | " + thePull.getThirdString() + " |");     
+      System.out.println(userPull.getFirstString() + " " + userPull.getSecondString() + " " + userPull.getThirdString());
+      System.out.println("You won $" + getUserWinnings(userPull, userBet) + " dollars!");
    }
 }
