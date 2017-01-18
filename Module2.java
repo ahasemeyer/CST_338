@@ -258,7 +258,157 @@ class TripleString
 	// Displays the current roll and how much the user has won during the roll
 	public static void display(TripleString userPull, int userBet)
 	{
-		System.out.println(userPull.getFirstString() + " " + userPull.getSecondString() + " " + userPull.getThirdString());
-		System.out.println("You won $" + getUserWinnings(userPull, userBet) + " dollars!");
+      if(getUserWinnings(userPull, userBet)!= 0)
+      {
+         System.out.println(userPull.getFirstString() + " " + userPull.getSecondString() + " " + userPull.getThirdString());
+         System.out.println("You won $" + getUserWinnings(userPull, userBet) + " dollars!");
+      }
+      else
+      {
+         System.out.println(userPull.getFirstString() + " " + userPull.getSecondString() + " " + userPull.getThirdString());
+         System.out.println("Sorry, you lose.");
+      }
 	}
 }
+
+/*
+Slot Machine Test Run
+
+How much would you like to bet (1 - 100) or 0 to quit? 155
+How much would you like to bet (1 - 100) or 0 to quit? 200
+How much would you like to bet (1 - 100) or 0 to quit? 99999
+How much would you like to bet (1 - 100) or 0 to quit? -15
+How much would you like to bet (1 - 100) or 0 to quit? -25
+How much would you like to bet (1 - 100) or 0 to quit? -666
+How much would you like to bet (1 - 100) or 0 to quit? 15
+whirrrrrr .... and your pull is...
+BAR BAR cherries
+Sorry, you lose.
+--------------------------------------------------------
+How much would you like to bet (1 - 100) or 0 to quit? 65
+whirrrrrr .... and your pull is...
+BAR BAR BAR
+You won $3250 dollars!
+--------------------------------------------------------
+How much would you like to bet (1 - 100) or 0 to quit? 15
+whirrrrrr .... and your pull is...
+BAR BAR BAR
+You won $750 dollars!
+--------------------------------------------------------
+How much would you like to bet (1 - 100) or 0 to quit? 28
+whirrrrrr .... and your pull is...
+cherries BAR BAR
+You won $140 dollars!
+--------------------------------------------------------
+How much would you like to bet (1 - 100) or 0 to quit? 65
+whirrrrrr .... and your pull is...
+BAR BAR BAR
+You won $3250 dollars!
+--------------------------------------------------------
+How much would you like to bet (1 - 100) or 0 to quit? 95
+whirrrrrr .... and your pull is...
+7 BAR 7
+Sorry, you lose.
+--------------------------------------------------------
+How much would you like to bet (1 - 100) or 0 to quit? 46
+whirrrrrr .... and your pull is...
+cherries cherries BAR
+You won $690 dollars!
+--------------------------------------------------------
+How much would you like to bet (1 - 100) or 0 to quit? 52
+whirrrrrr .... and your pull is...
+(space) cherries (space)
+Sorry, you lose.
+--------------------------------------------------------
+How much would you like to bet (1 - 100) or 0 to quit? 35
+whirrrrrr .... and your pull is...
+7 BAR BAR
+Sorry, you lose.
+--------------------------------------------------------
+How much would you like to bet (1 - 100) or 0 to quit? 95
+whirrrrrr .... and your pull is...
+BAR (space) cherries
+Sorry, you lose.
+--------------------------------------------------------
+How much would you like to bet (1 - 100) or 0 to quit? 18
+whirrrrrr .... and your pull is...
+BAR BAR cherries
+Sorry, you lose.
+--------------------------------------------------------
+How much would you like to bet (1 - 100) or 0 to quit? 66
+whirrrrrr .... and your pull is...
+(space) cherries BAR
+Sorry, you lose.
+--------------------------------------------------------
+How much would you like to bet (1 - 100) or 0 to quit? 26
+whirrrrrr .... and your pull is...
+cherries BAR BAR
+You won $130 dollars!
+--------------------------------------------------------
+How much would you like to bet (1 - 100) or 0 to quit? 33
+whirrrrrr .... and your pull is...
+7 (space) BAR
+Sorry, you lose.
+--------------------------------------------------------
+How much would you like to bet (1 - 100) or 0 to quit? 1
+whirrrrrr .... and your pull is...
+(space) (space) BAR
+Sorry, you lose.
+--------------------------------------------------------
+How much would you like to bet (1 - 100) or 0 to quit? 25
+whirrrrrr .... and your pull is...
+7 BAR (space)
+Sorry, you lose.
+--------------------------------------------------------
+How much would you like to bet (1 - 100) or 0 to quit? 85
+whirrrrrr .... and your pull is...
+BAR (space) BAR
+Sorry, you lose.
+--------------------------------------------------------
+How much would you like to bet (1 - 100) or 0 to quit? 64
+whirrrrrr .... and your pull is...
+7 BAR 7
+Sorry, you lose.
+--------------------------------------------------------
+How much would you like to bet (1 - 100) or 0 to quit? 75
+whirrrrrr .... and your pull is...
+(space) BAR BAR
+Sorry, you lose.
+--------------------------------------------------------
+How much would you like to bet (1 - 100) or 0 to quit? 81
+whirrrrrr .... and your pull is...
+BAR BAR (space)
+Sorry, you lose.
+--------------------------------------------------------
+How much would you like to bet (1 - 100) or 0 to quit? 26
+whirrrrrr .... and your pull is...
+cherries cherries (space)
+You won $390 dollars!
+--------------------------------------------------------
+How much would you like to bet (1 - 100) or 0 to quit? 18
+whirrrrrr .... and your pull is...
+cherries (space) cherries
+You won $90 dollars!
+--------------------------------------------------------
+How much would you like to bet (1 - 100) or 0 to quit? 26
+whirrrrrr .... and your pull is...
+BAR BAR BAR
+You won $1300 dollars!
+--------------------------------------------------------
+How much would you like to bet (1 - 100) or 0 to quit? 35
+whirrrrrr .... and your pull is...
+7 (space) 7
+Sorry, you lose.
+--------------------------------------------------------
+How much would you like to bet (1 - 100) or 0 to quit? 45
+whirrrrrr .... and your pull is...
+7 BAR cherries
+Sorry, you lose.
+--------------------------------------------------------
+How much would you like to bet (1 - 100) or 0 to quit? 0
+Thank you for playing at the Casino!
+Your individual winnings were: 0 3250 750 140 3250 0 690 0 0 0 0 0 130 0 0 0 0 0 0 0 390 90 1300 0 0
+Your total winnings were: $9990
+*/
+
+
