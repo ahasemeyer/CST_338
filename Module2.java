@@ -260,12 +260,12 @@ class TripleString
 	{
       if(getUserWinnings(userPull, userBet)!= 0)
       {
-         System.out.println(userPull.getFirstString() + " " + userPull.getSecondString() + " " + userPull.getThirdString());
+         System.out.println(userPull.toString());
          System.out.println("You won $" + getUserWinnings(userPull, userBet) + " dollars!");
       }
       else
       {
-         System.out.println(userPull.getFirstString() + " " + userPull.getSecondString() + " " + userPull.getThirdString());
+         System.out.println(userPull.toString());
          System.out.println("Sorry, you lose.");
       }
 	}
