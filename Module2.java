@@ -12,9 +12,9 @@ public class Module2
 	public static void main(String[] args)
 	{
 		int finalWinnings = 0;
-		int userBet = 0; 
+		int userBet = 1000; 
 		
-		while(true)
+		while(userBet != 0)
 		{
 			TripleString slotMachine = new TripleString();    
 			
@@ -22,7 +22,8 @@ public class Module2
 			
 			if (userBet == 0)
 			{
-				System.out.print("Thank you for playing at the Casino!");
+				System.out.println("Thank you for playing at the Casino!");
+				System.out.println("Your total winnings were: $" + finalWinnings);
 				break;
 			}
 			else if (userBet < 0 || userBet > 100)
@@ -37,6 +38,7 @@ public class Module2
 			
 			slotMachine.display(userPull, userBet);
 			
+			finalWinnings = finalWinnings + slotMachine.getUserWinnings(userPull, userBet);
 			
 			System.out.println("--------------------------------------------------------");
 	        
