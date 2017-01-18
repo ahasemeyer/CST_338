@@ -11,24 +11,34 @@ public class Module2
 {
 	public static void main(String[] args)
 	{
-		int winnings = 0;
+		int finalWinnings = 0;
+		int userBet = 0; 
 		
 		while(true)
 		{
+			TripleString slotMachine = new TripleString();    
 			
-			TripleString test = new TripleString();
+			userBet = slotMachine.getBet();
 			
-			int firstBet = test.getBet();
-			if (firstBet == 0)
+			if (userBet == 0)
 			{
+				System.out.print("Thank you for playing at the Casino!");
 				break;
 			}
-				
-	        TripleString firstPull = test.pull();
-	        winnings = firstBet * firstPull.getPayMultiplier(firstPull);
-	        
-	        System.out.println(winnings);
-	        test.display(firstPull, winnings);
+			else if (userBet < 0 || userBet > 100)
+			{
+				System.out.println("Invalid entry, try again... ");
+				continue;
+			}
+		
+			System.out.println("whirrrrrr .... and your pull is... ");
+			
+			TripleString userPull = slotMachine.pull();
+			
+			slotMachine.display(userPull);
+			
+			System.out.println("You won $" + slotMachine.getUserWinnings(userPull, userBet) + " dollars!");
+			System.out.println("--------------------------------------------------------");
 	        
 		}
       
@@ -68,20 +78,9 @@ class TripleString
    {
       Scanner keyboard = new Scanner(System.in);
 	   
-      System.out.println("How much would you like to bet (1 - 100) or 0 to quit?");
+      System.out.print("How much would you like to bet (1 - 100) or 0 to quit? ");
       int betAmount = keyboard.nextInt();
-	  if (betAmount == 0)
-	  {
-         System.out.print("Thank you for playing at the Casino!");
-	  }
-	  else
-	  {
-         while ((betAmount < 0) || (betAmount > 100))
-         {
-            System.out.println("Enter a between 0 - 100.");
-            betAmount = keyboard.nextInt();
-         }
-	  }
+
 	  return betAmount;
    }
    
@@ -228,11 +227,13 @@ class TripleString
 	   return payMultiplier;
    }
    
-   
-   
-   public static void display(TripleString thePull, int winnings)
+   public static int getUserWinnings(TripleString userPull, int userBet)
    {
-      System.out.println(thePull.getFirstString() + " " + thePull.getSecondString() + " " + thePull.getThirdString());
-      System.out.println("You won " + winnings);
+	   return (userBet * getPayMultiplier(userPull));
+   }
+   
+   public static void display(TripleString thePull)
+   {
+      System.out.println("| " + thePull.getFirstString() + " | " + thePull.getSecondString() + " | " + thePull.getThirdString() + " |");     
    }
 }
