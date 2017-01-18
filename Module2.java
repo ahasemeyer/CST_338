@@ -12,18 +12,25 @@ public class Module2
 {
 	public static void main(String[] args)
 	{
+		// Initialize main variables, userBet at 1000 is arbitrary, just can't be 0
 		int userWinnings = 0;
 		int finalWinnings = 0;
 		int userBet = 1000;
 		int count = 0;
 		
+		// While the user has not entered a 0 to end the main loop
 		while(userBet != 0)
 		{
+			// Initialize TripleString class 
 			TripleString slotMachine = new TripleString();    
 			
+			// Print out the current roll in program execution, I found this helpful
 			System.out.print(count + ". ");
+			
+			// Call getBet() and store in integer variable
 			userBet = slotMachine.getBet();
 			
+			// If the user enters zero, thank them for playing and display their winnings, break loop
 			if (userBet == 0)
 			{
 				System.out.println("Thank you for playing at the Casino!");
@@ -32,13 +39,16 @@ public class Module2
 				System.out.println("\nYour total winnings were: $" + finalWinnings);
 				break;
 			}
+			// Ignore any input that is not between 0-100
 			else if (userBet < 0 || userBet > 100)
 			{
 				continue;
 			}
-		
+			
+			// Make a cool sound
 			System.out.println("whirrrrrr .... and your pull is... ");
 			
+			// Initialize userPull to the TripleString slotMachine
 			TripleString userPull = slotMachine.pull();
 			
 			// Calculate user winnings for the round
@@ -52,6 +62,7 @@ public class Module2
 			finalWinnings = finalWinnings + userWinnings;
 			count = count + 1;
 			
+			// Formatting, so user is not disoriented 
 			System.out.println("--------------------------------------------------------");
 	        
 		}
@@ -60,11 +71,14 @@ public class Module2
 	}
 }
 
+// Creation of primary class
 class TripleString
 {
+	// Create class members
    public static final int MAX_LEN = 20;
    public static final int MAX_PULLS = 40;
    
+   // Integer to store round winnings in array max 40
    public static int[] pullWinnings = new int[MAX_PULLS];
    public static int numPulls = 0;
 	
@@ -79,11 +93,13 @@ class TripleString
    string3 = "";
    }
    
+   // Saves the current round winnings into an array using the loop count
    public void saveWinnings(int winnings, int count)
    {
 	   pullWinnings[count] = winnings;
    }
    
+   // Display each round by looping back through the original array
    public void displayWinnings(int count)
    {
 	   for (int i = 0; i < count; i++)
@@ -97,6 +113,7 @@ class TripleString
 	   return (str.length() < MAX_LEN);
    }
    
+   // Asks user for a bet, takes in data using Scanner and returns their input
    public static int getBet()
    {
       Scanner keyboard = new Scanner(System.in);
@@ -238,11 +255,13 @@ class TripleString
 	   return payMultiplier;
    }
    
+   // Gets user winnings by multiplying userbet with getPayMultiplier functions
    public static int getUserWinnings(TripleString userPull, int userBet)
    {
 	   return (userBet * getPayMultiplier(userPull));
    }
    
+   // Displays the current roll and how much the user has won during the roll
    public static void display(TripleString userPull, int userBet)
    {
       System.out.println(userPull.getFirstString() + " " + userPull.getSecondString() + " " + userPull.getThirdString());
