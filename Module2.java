@@ -127,93 +127,76 @@ class TripleString
 
 		return betAmount;
 	}
-
+   
+   //Returns a string based on the propbablity of that string occuring 
+   public static String randString()
+   {
+      String str = "";
+      double randomNumber = (Math.random()*100);
+      
+		if ((randomNumber > 0) && (randomNumber <= 50))
+		{
+         str = "BAR";
+		}
+		else if ((randomNumber > 50) && (randomNumber <= 75))
+		{
+			str = "cherries"; 
+		}
+		else if ((randomNumber > 75) && (randomNumber <= 87.5))
+		{
+			str = "(space)";
+		}
+		else
+		{
+			str = "7";
+		}
+      
+      return str;
+   }
+   
+   //Sets the first string to a random string
 	public static void setFirstString()
 	{
-		double randomNumber = (Math.random()*100);
-
-		if ((randomNumber > 0) && (randomNumber <= 50))
-		{
-			string1 = "BAR";
-		}
-		else if ((randomNumber > 50) && (randomNumber <= 75))
-		{
-			string1 = "cherries"; 
-		}
-		else if ((randomNumber > 75) && (randomNumber <= 87.5))
-		{
-			string1 = "(space)";
-		}
-		else
-		{
-			string1 = "7";
-		}
+      string1 = randString();
 	}
 
+   //Sets the second string to a random string
 	public static void setSecondString()
 	{
-		double randomNumber = (Math.random()*100);
-
-		if ((randomNumber > 0) && (randomNumber <= 50))
-		{
-			string2 = "BAR";
-		}
-		else if ((randomNumber > 50) && (randomNumber <= 75))
-		{
-			string2 = "cherries"; 
-		}
-		else if ((randomNumber > 75) && (randomNumber <= 87.5))
-		{
-			string2 = "(space)";
-		}
-		else
-		{
-			string2 = "7";
-		}
+      string2 = randString();
 	}
 
+   //Sets the third string to a random string
 	public static void setThirdString()
 	{
-		double randomNumber = (Math.random()*100);
-
-		if ((randomNumber > 0) && (randomNumber <= 50))
-		{
-			string3 = "BAR";
-		}
-		else if ((randomNumber > 50) && (randomNumber <= 75))
-		{
-			string3 = "cherries"; 
-		}
-		else if ((randomNumber > 75) && (randomNumber <= 87.5))
-		{
-			string3 = "(space)";
-		}
-		else
-		{
-			string3 = "7";
-		}
+      string3 = randString();
 	}
 
+   //Returns string1
 	public static String getFirstString()
 	{   
 		return string1;
 	}
 
+   //Returns string2
 	public static String getSecondString()
 	{   
 		return string2;
 	}
 
+   //Returns string3
 	public static String getThirdString()
 	{   
 		return string3;
 	}
 
+   //Combines all 3 strings to 1 full string
 	public String toString()
 	{
 		return(getFirstString() + " " + getSecondString() + " " + getThirdString());
 	}
 
+   //Assigns random strings to each string variable
 	public static TripleString pull()
 	{   
 		TripleString pullString = new TripleString();
@@ -225,33 +208,40 @@ class TripleString
 
 	}
 
+   //Applies a payMultiplier based on the combination of the strings
 	public static int getPayMultiplier(TripleString thePull)
 	{
 		int payMultiplier;
+      //cherries, not cherries, any : pays 5 x bet
 		if ((thePull.getFirstString().equals("cherries")) && (!thePull.getSecondString().equals("cherries")))
 		{
 			payMultiplier = 5;
 		}
+      //cherries, cherries, not cherries : pays 15 x bet
 		else if ((thePull.getFirstString().equals("cherries")) && (thePull.getSecondString().equals("cherries"))
 				&& (!thePull.getThirdString().equals("cherries")))
 		{
 			payMultiplier = 15;
 		}
+      //cherries, cherries, cherries : pays 30 x bet
 		else if ((thePull.getFirstString().equals("cherries")) && (thePull.getSecondString().equals("cherries")) 
 				&& (thePull.getThirdString().equals("cherries")))
 		{
 			payMultiplier = 30;		   
 		}
+      //BAR, BAR, BAR : pays 50 x bet
 		else if ((thePull.getFirstString().equals("BAR")) && (thePull.getSecondString().equals("BAR")) 
 				&& (thePull.getThirdString().equals("BAR")))
 		{
 			payMultiplier = 50;			   
 		}
+      //7, 7, 7 : pays 100 x bet
 		else if ((thePull.getFirstString().equals("7")) && (thePull.getSecondString().equals("7")) 
 				&& (thePull.getThirdString().equals("7")))
 		{
 			payMultiplier = 100;		   
 		}
+      //all other combinations pay 0
 		else
 		{
 			payMultiplier = 0;
