@@ -5,30 +5,35 @@ CST-338 SP17
 Main program
 */
 
+import java.util.Arrays;
 import java.util.Scanner;
 
 public class Module2
 {
 	public static void main(String[] args)
 	{
+		int userWinnings = 0;
 		int finalWinnings = 0;
-		int userBet = 1000; 
+		int userBet = 1000;
+		int count = 0;
 		
 		while(userBet != 0)
 		{
 			TripleString slotMachine = new TripleString();    
 			
+			System.out.print(count + ". ");
 			userBet = slotMachine.getBet();
 			
 			if (userBet == 0)
 			{
 				System.out.println("Thank you for playing at the Casino!");
-				System.out.println("Your total winnings were: $" + finalWinnings);
+				System.out.print("Your individual winnings were: ");
+				slotMachine.displayWinnings(count);
+				System.out.println("\nYour total winnings were: $" + finalWinnings);
 				break;
 			}
 			else if (userBet < 0 || userBet > 100)
 			{
-				System.out.println("Invalid entry, try again... ");
 				continue;
 			}
 		
@@ -36,9 +41,15 @@ public class Module2
 			
 			TripleString userPull = slotMachine.pull();
 			
+			userWinnings = slotMachine.getUserWinnings(userPull, userBet);
+			
+			// Display user roll
 			slotMachine.display(userPull, userBet);
 			
-			finalWinnings = finalWinnings + slotMachine.getUserWinnings(userPull, userBet);
+			// Save all data
+			slotMachine.saveWinnings(userWinnings, count);		
+			finalWinnings = finalWinnings + userWinnings;
+			count = count + 1;
 			
 			System.out.println("--------------------------------------------------------");
 	        
@@ -67,7 +78,18 @@ class TripleString
    string3 = "";
    }
    
+   public void saveWinnings(int winnings, int count)
+   {
+	   pullWinnings[count] = winnings;
+   }
    
+   public void displayWinnings(int count)
+   {
+	   for (int i = 0; i < count; i++)
+	   {
+		   System.out.print(pullWinnings[i] + ", ");
+	   }
+   }
    
    private static boolean validString(String str)
    {
