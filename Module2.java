@@ -41,13 +41,14 @@ public class Module2
 			
 			TripleString userPull = slotMachine.pull();
 			
+			// Calculate user winnings for the round
 			userWinnings = slotMachine.getUserWinnings(userPull, userBet);
 			
 			// Display user roll
 			slotMachine.display(userPull, userBet);
 			
 			// Save all data
-			slotMachine.saveWinnings(userWinnings, count);		
+			slotMachine.saveWinnings(userWinnings, count);	
 			finalWinnings = finalWinnings + userWinnings;
 			count = count + 1;
 			

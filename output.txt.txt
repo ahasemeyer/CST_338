@@ -1,0 +1,107 @@
+0. How much would you like to bet (1 - 100) or 0 to quit? 100
+whirrrrrr .... and your pull is... 
+7 BAR cherries
+You won $0 dollars!
+--------------------------------------------------------
+1. How much would you like to bet (1 - 100) or 0 to quit? 10
+whirrrrrr .... and your pull is... 
+7 BAR BAR
+You won $0 dollars!
+--------------------------------------------------------
+2. How much would you like to bet (1 - 100) or 0 to quit? 20
+whirrrrrr .... and your pull is... 
+cherries BAR cherries
+You won $100 dollars!
+--------------------------------------------------------
+3. How much would you like to bet (1 - 100) or 0 to quit? 10
+whirrrrrr .... and your pull is... 
+cherries (space) BAR
+You won $50 dollars!
+--------------------------------------------------------
+4. How much would you like to bet (1 - 100) or 0 to quit? 30
+whirrrrrr .... and your pull is... 
+cherries 7 cherries
+You won $150 dollars!
+--------------------------------------------------------
+5. How much would you like to bet (1 - 100) or 0 to quit? 35
+whirrrrrr .... and your pull is... 
+BAR cherries BAR
+You won $0 dollars!
+--------------------------------------------------------
+6. How much would you like to bet (1 - 100) or 0 to quit? 80
+whirrrrrr .... and your pull is... 
+BAR BAR 7
+You won $0 dollars!
+--------------------------------------------------------
+7. How much would you like to bet (1 - 100) or 0 to quit? 70
+whirrrrrr .... and your pull is... 
+(space) (space) 7
+You won $0 dollars!
+--------------------------------------------------------
+8. How much would you like to bet (1 - 100) or 0 to quit? 1000
+8. How much would you like to bet (1 - 100) or 0 to quit? 1000000
+8. How much would you like to bet (1 - 100) or 0 to quit? -100
+8. How much would you like to bet (1 - 100) or 0 to quit? 30
+whirrrrrr .... and your pull is... 
+7 BAR (space)
+You won $0 dollars!
+--------------------------------------------------------
+9. How much would you like to bet (1 - 100) or 0 to quit? 37
+whirrrrrr .... and your pull is... 
+7 cherries BAR
+You won $0 dollars!
+--------------------------------------------------------
+10. How much would you like to bet (1 - 100) or 0 to quit? 98
+whirrrrrr .... and your pull is... 
+BAR BAR BAR
+You won $4900 dollars!
+--------------------------------------------------------
+11. How much would you like to bet (1 - 100) or 0 to quit? 75
+whirrrrrr .... and your pull is... 
+BAR BAR BAR
+You won $3750 dollars!
+--------------------------------------------------------
+12. How much would you like to bet (1 - 100) or 0 to quit? 34
+whirrrrrr .... and your pull is... 
+BAR (space) cherries
+You won $0 dollars!
+--------------------------------------------------------
+13. How much would you like to bet (1 - 100) or 0 to quit? 28
+whirrrrrr .... and your pull is... 
+7 BAR (space)
+You won $0 dollars!
+--------------------------------------------------------
+14. How much would you like to bet (1 - 100) or 0 to quit? 48
+whirrrrrr .... and your pull is... 
+BAR BAR cherries
+You won $0 dollars!
+--------------------------------------------------------
+15. How much would you like to bet (1 - 100) or 0 to quit? 93
+whirrrrrr .... and your pull is... 
+7 BAR 7
+You won $0 dollars!
+--------------------------------------------------------
+16. How much would you like to bet (1 - 100) or 0 to quit? 28
+whirrrrrr .... and your pull is... 
+cherries cherries (space)
+You won $420 dollars!
+--------------------------------------------------------
+17. How much would you like to bet (1 - 100) or 0 to quit? 38
+whirrrrrr .... and your pull is... 
+cherries BAR cherries
+You won $190 dollars!
+--------------------------------------------------------
+18. How much would you like to bet (1 - 100) or 0 to quit? 47
+whirrrrrr .... and your pull is... 
+(space) (space) cherries
+You won $0 dollars!
+--------------------------------------------------------
+19. How much would you like to bet (1 - 100) or 0 to quit? 17
+whirrrrrr .... and your pull is... 
+7 BAR BAR
+You won $0 dollars!
+--------------------------------------------------------
+20. How much would you like to bet (1 - 100) or 0 to quit? 0
+Thank you for playing at the Casino!
+Your individual winnings were: 0, 0, 100, 50, 150, 0, 0, 0, 0, 0, 4900, 3750, 0, 0, 0, 0, 420, 190, 0, 0, 
+Your total winnings were: $9560
