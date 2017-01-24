@@ -18,7 +18,7 @@
  }
  
  
- public class Card
+ class Card
  {
     enum Suit {CLUBS, DIAMONDS, HEARTS, SPADES};
     
@@ -38,3 +38,110 @@
        System.out.print(Card.value);
     }
  }
+ 
+ class Hand
+ {
+     public static int MAX_CARDS = 100;
+     
+     private Card[] myCards;
+     private int numCards;
+     
+     public Hand()
+     {
+         
+     }
+     
+     void resetHand()
+     {
+         
+     }
+     
+     boolean takeCard(Card card)
+     {
+         
+     }
+     
+     Card playCard()
+     {
+         
+     }
+     
+     String toString()
+     {
+         
+     }
+     
+     Card inspectCard(int k)
+     {
+        
+     }
+     
+ }
+ 
+ class Deck
+ {
+    public final int MAX_CARDS = 6 * 52;
+    
+    private static Card[] masterPack;
+    
+    private Card[] cards;
+    private int topCard;
+    private int numPacks;
+    
+    public Deck(int numPacks)
+    {
+       
+    }
+    
+    public void init(int numPacks)
+    {
+       
+    }
+    
+    public void shuffle()
+    {
+       
+    }
+    
+    public Card dealCard()
+    {
+       
+    }
+    
+    public Card inspectCard(int k)
+    {
+       
+    }
+    
+    private static void allocateMasterPack()
+    {
+       
+    }
+    
+ }
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+     
+     
+     
+     
