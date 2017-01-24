@@ -115,7 +115,7 @@
        Tests if the values entered are compatible with the type Card
        @return true if they are compatible false if not
     */
-    public static boolean errorFlag(char value, Suit suit)
+    private static boolean errorFlag(char value, Suit suit)
     {
        if(isValid(value, suit))
        {
