@@ -13,30 +13,35 @@
  {
     public static void main(String[] arg)
     {
-       
+      Card.Test();
     }
  }
  
  
- public class Card
+class Card
  {
     enum Suit {CLUBS, DIAMONDS, HEARTS, SPADES};
     
     private char value;
-    private Suit suit;
+    private static Suit suit;
     private boolean errorFlag;
     
     public Card()
     {
        value = 'A';
        suit = Suit.valueOf("SPADES");
+       errorFlag = false;
     }
+
     
     public static void Test()
     {
-       Card();
-       System.out.print(Card.value);
+      Card test = new Card();
+      System.out.println(test.suit);
+      System.out.println("");
+      if (test.errorFlag)
+         System.out.println("True");
+      else
+         System.out.println("False");
     }
  }
- 
- //TEST  
