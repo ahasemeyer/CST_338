@@ -38,9 +38,8 @@
     public Card(char value, Suit suit)
     {
        this.value = value;
-       this.suit = suit;
+       Card.suit = suit;
     }
-    
     
     public void setValue(char value)
     {
@@ -52,12 +51,12 @@
        this.suit = suit;
     }
     
-    public void getValue()
+    public char getValue()
     {
        return value;
     }
     
-    public void getSuit()
+    public Suit getSuit()
     {
        return suit;
     }
