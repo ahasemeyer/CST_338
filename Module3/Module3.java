@@ -33,20 +33,29 @@
        suit = Suit.valueOf("SPADES");
        errorFlag = false;
     }
-
+    
+    
+    public Card(char value, Suit suit)
+    {
+       this.value = value;
+       this.suit = Suit.valueOf(suit);
+    }
+    /*
+    private boolean errorFlag(char value, Suit suit)
+    {
+       
+    }
+    */
     
     public static void Test()
     {
       Card test = new Card();
       System.out.println(test.suit);
-      System.out.println("");
-      if (test.errorFlag)
-         System.out.println("True");
-      else
-         System.out.println("False");
+      System.out.println(test.value);
+;
     }
  }
-
+/*
  class Hand
  {
      public static int MAX_CARDS = 100;
@@ -129,7 +138,7 @@
  }
  
  
- 
+ */
  
  
  
