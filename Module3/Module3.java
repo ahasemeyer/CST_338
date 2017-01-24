@@ -153,7 +153,9 @@ class Card
     
 
    public static void Test()
-   {}
+   {
+      /*Use this function to test methods of type card */
+   }
    
 }
 
@@ -170,7 +172,7 @@ class Hand
       numCards = 0;
    }
    
-   public void resetHand()
+   public static void resetHand()
    {
       myCards = new Card[MAX_CARDS];
       numCards = 0;
@@ -178,10 +180,11 @@ class Hand
    
    public static boolean takeCard(Card card)
    {  
-      Hand.myCards[Hand.numCards] = card;
+      myCards[numCards] = card;
       numCards++;
       return true;
    }
+   
    
    public static void Test()
    {
@@ -196,9 +199,18 @@ class Hand
       takeCard(firstCard);
       takeCard(secondCard);
       takeCard(thirdCard);
+      System.out.println("values of first 3 cards added to hand 4th should be null");
+      System.out.println(myCards[0] + " \n" + myCards[1] + " \n" + myCards[2] + "\n" + myCards[3]);
       
-      System.out.println(myCards[0] + " \n" + myCards[1] + " \n" + myCards[2]);
+      resetHand();
+      System.out.println("Aftrer resetHand all should be Null");
+      System.out.println(myCards[0] + " \n" + myCards[1] + " \n" + myCards[2] + "\n" + myCards[3]);
       
+      takeCard(firstCard);
+      takeCard(secondCard);
+      takeCard(thirdCard);
+      System.out.println("values of first 3 cards added to hand 4th should be null");
+      System.out.println(myCards[0] + " \n" + myCards[1] + " \n" + myCards[2] + "\n" + myCards[3]);
    }
 }
 
