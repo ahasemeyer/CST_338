@@ -18,15 +18,22 @@
  }
  
  
-
+/**
+   Definition of the class Card, which will store a playing cards information
+   such as its Value and its Suit this class will also determine if the entered
+   values are legal.
+*/
  class Card
  {
     enum Suit {CLUBS, DIAMONDS, HEARTS, SPADES};
     
     private char value;
-    private static Suit suit;
-    private boolean errorFlag;
+    private Suit suit;
+    private static boolean errorFlag;
     
+    /**
+       Default constructor for Card
+    */
     public Card()
     {
        value = 'A';
@@ -34,53 +41,134 @@
        errorFlag = false;
     }
     
-    
+    /**
+       Constructor for the class card with parameters
+       @param char value and Suit suit
+    */
     public Card(char value, Suit suit)
     {
-       this.value = value;
-       Card.suit = suit;
+       if(errorFlag(value, suit))
+       {
+          System.out.println(errorFlag(value, suit));
+       }
+       else
+       {
+          this.value = value;
+          this.suit = suit;
+       }
     }
     
-    public void setValue(char value)
+    /**
+       Mutator set will set the value and suit to an object of type card
+       @param char value and Suit suit
+    */
+    public void set(char value, Suit suit)
     {
-       this.value = value;
+       if(errorFlag(value, suit))
+       {
+          System.out.println(errorFlag(value, suit));
+       }
+       else
+       {
+          this.value = value;
+          this.suit = suit;
+       }
     }
-    
-    public void setSuit(Suit suit)
-    {
-       this.suit = suit;
-    }
-    
+
+    /**
+       Accesses a cards Value
+       @return value
+    */
     public char getValue()
     {
        return value;
     }
     
+    /**
+       Accesses a cards Suit
+       @return suit
+    */
     public Suit getSuit()
     {
        return suit;
     }
     
-    /*
-    private boolean errorFlag(char value, Suit suit)
-    {
-       
-    }
+    /**
+       Converts an object of type Card to a string
+       @return "A of SPADES"
     */
+    public String toString()
+    {
+       return(value + " of " + suit);
+    }
     
+    /**
+       Tests two objects of type card to see if they are equals
+       @return true if equal flase is not equal
+    */
+    public boolean equals(Card otherCard)
+    {
+       return((this.suit == otherCard.suit) && (this.value == otherCard.value));
+    }
+    
+    /**
+       Tests if the values entered are compatible with the type Card
+       @return true if they are compatible false if not
+    */
+    public static boolean errorFlag(char value, Suit suit)
+    {
+       if(isValid(value, suit))
+       {
+          return false;
+       }
+       else
+       {
+          System.out.println("Fatal Error: incompatible Value or Suit");
+          System.exit(0);
+          return true;
+       }
+    }
+    
+    /**
+       Tests to see if Value and Suit are allowed by checking our predefined allSuits and allValues
+       @return true if entered values exist and false if not
+    */
+    private static boolean isValid(char value, Suit suit)
+    {
+      Suit[] allSuits = Suit.values();
+      char[] allValues = {'1', '2', '3', '4', '5', '6' , '7', '8', '9' ,'T', 'J', 'Q', 'K', 'A'};
+      for(int i = 0; i < allSuits.length; i++)
+      {
+         if (suit == allSuits[i])
+         {
+            for(int j = 0; j < allValues.length; j++)
+               if(value == allValues[j])
+               {
+                  return true;
+               }
+         }
+      }
+      return false;
+    }
+    
+
     public static void Test()
     {
-      Suit testSuit = Suit.valueOf("CLUBS");
+      Suit testSuit = Suit.HEARTS;
+      Suit testSuit2 = Suit.SPADES;
+      Suit testSuit3 = Suit.CLUBS;
        
-      Card test = new Card('K', testSuit);
-      System.out.println(test.value);
-      System.out.println(test.suit);
-      test.setValue('J');
-      test.setSuit(Suit.HEARTS);
-      System.out.println(test.value);
-      System.out.println(test.suit);
+       
+      Card test = new Card();
+      Card test2 = new Card();
+      Card test3 = new Card();
+      
+      test.set('K', testSuit);
+      test2.set('K', testSuit);
+      test3.set('T', testSuit3);
+      
+      Card test4 = new Card('L', testSuit);
 
-;
     }
  }
 /*
