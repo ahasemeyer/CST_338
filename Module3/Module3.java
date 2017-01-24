@@ -47,9 +47,9 @@
     */
     public Card(char value, Suit suit)
     {
-       if(errorFlag(value, suit))
+       if(!isValid(value, suit))
        {
-          System.out.println(errorFlag(value, suit));
+          errorFlag(value, suit);
        }
        else
        {
@@ -64,9 +64,9 @@
     */
     public void set(char value, Suit suit)
     {
-       if(errorFlag(value, suit))
+       if(!isValid(value, suit))
        {
-          System.out.println(errorFlag(value, suit));
+          errorFlag(value, suit);
        }
        else
        {
@@ -123,8 +123,7 @@
        }
        else
        {
-          System.out.println("Fatal Error: incompatible Value or Suit");
-          System.exit(0);
+          System.out.println("** illegal **");
           return true;
        }
     }
@@ -167,7 +166,8 @@
       test2.set('K', testSuit);
       test3.set('T', testSuit3);
       
-      Card test4 = new Card('L', testSuit);
+      Card test4 = new Card('s', testSuit3);
+      Card test5 = new Card('p', testSuit3);
 
     }
  }
