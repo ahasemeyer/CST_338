@@ -16,3 +16,25 @@
        
     }
  }
+ 
+ 
+ public class Card
+ {
+    enum Suit {CLUBS, DIAMONDS, HEARTS, SPADES};
+    
+    private char value;
+    private Suit suit;
+    private boolean errorFlag;
+    
+    public Card()
+    {
+       value = 'A';
+       suit = Suit.valueOf("SPADES");
+    }
+    
+    public static void Test()
+    {
+       Card();
+       System.out.print(Card.value);
+    }
+ }
