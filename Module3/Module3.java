@@ -34,6 +34,10 @@
        errorFlag = false;
     }
 
+    public Card(char value, Suit suit)
+    {
+       
+    }
     
     public static void Test()
     {
