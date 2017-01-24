@@ -1,21 +1,22 @@
 /**
- * @author Austin Hasemeyer
- * @author Samuel Roy
- * @author Ali Asrani
+* @author Austin Hasemeyer
+* @author Samuel Roy
+* @author Ali Asrani
 
- * Programming Assignment 3
- * School: CSU, Monterey Bay
- * Course: CST 338 Software Design
- * Professor: Jesse Cecil, MS
- */
+* Programming Assignment 3
+* School: CSU, Monterey Bay
+* Course: CST 338 Software Design
+* Professor: Jesse Cecil, MS
+*/
  
- public class Module3
- {
-    public static void main(String[] arg)
-    {
-      Card.Test();
-    }
- }
+public class Module3
+{
+   public static void main(String[] arg)
+   {
+     Card.Test();
+     Hand.Test();
+   }
+}
  
  
 /**
@@ -23,117 +24,117 @@
    such as its Value and its Suit this class will also determine if the entered
    values are legal.
 */
- class Card
- {
-    enum Suit {CLUBS, DIAMONDS, HEARTS, SPADES};
-    
-    private char value;
-    private Suit suit;
-    private static boolean errorFlag;
-    
-    /**
-       Default constructor for Card
-    */
-    public Card()
-    {
-       value = 'A';
-       suit = Suit.valueOf("SPADES");
-       errorFlag = false;
-    }
-    
-    /**
-       Constructor for the class card with parameters
-       @param char value and Suit suit
-    */
-    public Card(char value, Suit suit)
-    {
-       if(!isValid(value, suit))
-       {
-          errorFlag(value, suit);
-       }
-       else
-       {
-          this.value = value;
-          this.suit = suit;
-       }
-    }
-    
-    /**
-       Mutator set will set the value and suit to an object of type card
-       @param char value and Suit suit
-    */
-    public void set(char value, Suit suit)
-    {
-       if(!isValid(value, suit))
-       {
-          errorFlag(value, suit);
-       }
-       else
-       {
-          this.value = value;
-          this.suit = suit;
-       }
-    }
+class Card
+{
+   enum Suit {CLUBS, DIAMONDS, HEARTS, SPADES};
+   
+   private char value;
+   private Suit suit;
+   private static boolean errorFlag;
+   
+   /**
+      Default constructor for Card
+   */
+   public Card()
+   {
+      value = 'A';
+      suit = Suit.valueOf("SPADES");
+      errorFlag = false;
+   }
+   
+   /**
+      Constructor for the class card with parameters
+      @param char value and Suit suit
+   */
+   public Card(char value, Suit suit)
+   {
+      if(!isValid(value, suit))
+      {
+         errorFlag(value, suit);
+      }
+      else
+      {
+         this.value = value;
+         this.suit = suit;
+      }
+   }
+   
+   /**
+      Mutator set will set the value and suit to an object of type card
+      @param char value and Suit suit
+   */
+   public void set(char value, Suit suit)
+   {
+      if(!isValid(value, suit))
+      {
+         errorFlag(value, suit);
+      }
+      else
+      {
+         this.value = value;
+         this.suit = suit;
+      }
+   }
 
-    /**
-       Accesses a cards Value
-       @return value
-    */
-    public char getValue()
-    {
-       return value;
-    }
+   /**
+      Accesses a cards Value
+      @return value
+   */
+   public char getValue()
+   {
+      return value;
+   }
+   
+   /**
+      Accesses a cards Suit
+      @return suit
+   */
+   public Suit getSuit()
+   {
+      return suit;
+   }
+   
+   /**
+      Converts an object of type Card to a string
+      @return "A of SPADES"
+   */
+   public String toString()
+   {
+      return(value + " of " + suit);
+   }
     
-    /**
-       Accesses a cards Suit
-       @return suit
-    */
-    public Suit getSuit()
-    {
-       return suit;
-    }
-    
-    /**
-       Converts an object of type Card to a string
-       @return "A of SPADES"
-    */
-    public String toString()
-    {
-       return(value + " of " + suit);
-    }
-    
-    /**
-       Tests two objects of type card to see if they are equals
-       @return true if equal flase is not equal
-    */
-    public boolean equals(Card otherCard)
-    {
-       return((this.suit == otherCard.suit) && (this.value == otherCard.value));
-    }
-    
-    /**
-       Tests if the values entered are compatible with the type Card
-       @return true if they are compatible false if not
-    */
-    private static boolean errorFlag(char value, Suit suit)
-    {
-       if(isValid(value, suit))
-       {
-          return false;
-       }
-       else
-       {
-          System.out.println("** illegal **");
-          return true;
-       }
-    }
-    
-    /**
-       Tests to see if Value and Suit are allowed by checking our predefined allSuits and allValues
-       @return true if entered values exist and false if not
-    */
-    private static boolean isValid(char value, Suit suit)
-    {
+   /**
+      Tests two objects of type card to see if they are equals
+      @return true if equal flase is not equal
+   */
+   public boolean equals(Card otherCard)
+   {
+      return((this.suit == otherCard.suit) && (this.value == otherCard.value));
+   }
+   
+   /**
+      Tests if the values entered are compatible with the type Card
+      @return true if they are compatible false if not
+   */
+   private static boolean errorFlag(char value, Suit suit)
+   {
+      if(isValid(value, suit))
+      {
+         return false;
+      }
+      else
+      {
+         System.out.println("** illegal **");
+         return true;
+      }
+   }
+   
+   /**
+      Tests to see if Value and Suit are allowed by checking our predefined allSuits and allValues
+      @return true if entered values exist and false if not
+   */
+   private static boolean isValid(char value, Suit suit)
+   {
       Suit[] allSuits = Suit.values();
       char[] allValues = {'1', '2', '3', '4', '5', '6' , '7', '8', '9' ,'T', 'J', 'Q', 'K', 'A'};
       for(int i = 0; i < allSuits.length; i++)  //First checks to see if suit is in allSuits
@@ -148,113 +149,106 @@
          }
       }
       return false;
-    }
+   }
     
 
-    public static void Test()
-    {
-      Suit testSuit = Suit.HEARTS;
-      Suit testSuit2 = Suit.SPADES;
-      Suit testSuit3 = Suit.CLUBS;
-       
-       
-      Card test = new Card();
-      Card test2 = new Card();
-      Card test3 = new Card();
-      
-      test.set('K', testSuit);
-      test2.set('K', testSuit);
-      test3.set('T', testSuit3);
-      
-      Card test4 = new Card('s', testSuit3);
-      Card test5 = new Card('p', testSuit3);
+   public static void Test()
+   {}
+   
+}
 
-    }
- }
-/*
- class Hand
- {
-     public static int MAX_CARDS = 100;
+class Hand
+{
+   public static int MAX_CARDS = 100;
+    
+   private Card[] myCards;
+   private int numCards;
      
-     private Card[] myCards;
-     private int numCards;
+   public Hand()
+   {
+    myCards = new Card[MAX_CARDS];
+    for myCards (int i =0; i < MAX_CARDS; i++)
+    
+   }
      
-     public Hand()
-     {
+   public static void Test()
+   {
+     
+   }
+}
+
+/* 
+   void resetHand()
+   {
+       
+   }
+     
+   boolean takeCard(Card card)
+   {
          
-     }
+   }
      
-     void resetHand()
-     {
+   Card playCard()
+   {
          
-     }
+   }
      
-     boolean takeCard(Card card)
-     {
+   String toString()
+   {
          
-     }
+   }
      
-     Card playCard()
-     {
-         
-     }
-     
-     String toString()
-     {
-         
-     }
-     
-     Card inspectCard(int k)
-     {
+   Card inspectCard(int k)
+   {
         
-     }
+   }
      
- }
+}
  
- class Deck
- {
-    public final int MAX_CARDS = 6 * 52;
+class Deck
+{
+   public final int MAX_CARDS = 6 * 52;
+   
+   private static Card[] masterPack;
+   
+   private Card[] cards;
+   private int topCard;
+   private int numPacks;
     
-    private static Card[] masterPack;
+   public Deck(int numPacks)
+   {
+      
+   }
     
-    private Card[] cards;
-    private int topCard;
-    private int numPacks;
+   public void init(int numPacks)
+   {
+      
+   }
     
-    public Deck(int numPacks)
-    {
-       
-    }
+   public void shuffle()
+   {
+      
+   }
     
-    public void init(int numPacks)
-    {
-       
-    }
+   public Card dealCard()
+   {
+      
+   }
+   
+   public Card inspectCard(int k)
+   {
+      
+   }
     
-    public void shuffle()
-    {
-       
-    }
-    
-    public Card dealCard()
-    {
-       
-    }
-    
-    public Card inspectCard(int k)
-    {
-       
-    }
-    
-    private static void allocateMasterPack()
-    {
-       
-    }
-    
- }
+   private static void allocateMasterPack()
+   {
+      
+   }
+   
+}
  
  
- */
+*/
  
  
  
