@@ -38,3 +38,35 @@
        System.out.print(Card.value);
     }
  }
+ 
+ public class Hand
+ {
+     public static int MAX_CARDS = 100;
+     
+     private Card[] myCards;
+     private int numCards;
+     
+     public Hand()
+     {
+         
+     }
+     
+     void resetHand()
+     {
+         
+     }
+     
+     boolean takeCard(Card card)
+     {
+         
+     }
+     
+     Card playCard()
+     {
+         
+     }
+     
+     String toString()
+     {
+         
+     }
