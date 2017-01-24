@@ -18,7 +18,7 @@
  }
  
  
- public class Card
+ class Card
  {
     enum Suit {CLUBS, DIAMONDS, HEARTS, SPADES};
     
@@ -39,7 +39,7 @@
     }
  }
  
- public class Hand
+ class Hand
  {
      public static int MAX_CARDS = 100;
      
@@ -78,7 +78,7 @@
      
  }
  
- public static class Deck
+ class Deck
  {
     public final int MAX_CARDS = 6 * 52;
     
