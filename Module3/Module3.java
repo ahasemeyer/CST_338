@@ -137,11 +137,11 @@
     {
       Suit[] allSuits = Suit.values();
       char[] allValues = {'1', '2', '3', '4', '5', '6' , '7', '8', '9' ,'T', 'J', 'Q', 'K', 'A'};
-      for(int i = 0; i < allSuits.length; i++)
+      for(int i = 0; i < allSuits.length; i++)  //First checks to see if suit is in allSuits
       {
          if (suit == allSuits[i])
          {
-            for(int j = 0; j < allValues.length; j++)
+            for(int j = 0; j < allValues.length; j++) //Then checks to see if value is in allValues
                if(value == allValues[j])
                {
                   return true;
