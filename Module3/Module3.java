@@ -13,8 +13,8 @@ public class Module3
 {
    public static void main(String[] arg)
    {
-     Card.Test();
-     Hand.Test();
+      Card.Test();
+      Hand.Test();
    }
 }
  
@@ -161,50 +161,49 @@ class Hand
 {
    public static int MAX_CARDS = 100;
     
-   private Card[] myCards;
-   private int numCards;
+   private static Card[] myCards;
+   private static int numCards;
      
    public Hand()
    {
-    myCards = new Card[MAX_CARDS];
-    for myCards (int i =0; i < MAX_CARDS; i++)
-    
+      myCards = new Card[MAX_CARDS];
+      numCards = 0;
    }
-     
+   
+   public void resetHand()
+   {
+      myCards = new Card[MAX_CARDS];
+      numCards = 0;
+   }
+   
+   public static boolean takeCard(Card card)
+   {  
+      Hand.myCards[Hand.numCards] = card;
+      numCards++;
+      return true;
+   }
+   
    public static void Test()
    {
-     
+      Hand testHand = new Hand();
+      Card.Suit Hearts = Card.Suit.HEARTS;
+      Card.Suit Clubs = Card.Suit.CLUBS;
+      Card.Suit Spades = Card.Suit.SPADES;
+      Card firstCard = new Card('5', Hearts);
+      Card secondCard = new Card('T', Clubs);
+      Card thirdCard = new Card('9', Spades);
+      
+      takeCard(firstCard);
+      takeCard(secondCard);
+      takeCard(thirdCard);
+      
+      System.out.println(myCards[0] + " \n" + myCards[1] + " \n" + myCards[2]);
+      
    }
 }
 
-/* 
-   void resetHand()
-   {
-       
-   }
-     
-   boolean takeCard(Card card)
-   {
-         
-   }
-     
-   Card playCard()
-   {
-         
-   }
-     
-   String toString()
-   {
-         
-   }
-     
-   Card inspectCard(int k)
-   {
-        
-   }
-     
-}
- 
+/*
+
 class Deck
 {
    public final int MAX_CARDS = 6 * 52;
