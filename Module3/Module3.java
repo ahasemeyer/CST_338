@@ -38,8 +38,30 @@
     public Card(char value, Suit suit)
     {
        this.value = value;
-       this.suit = Suit.valueOf(suit);
+       this.suit = suit;
     }
+    
+    
+    public void setValue(char value)
+    {
+       this.value = value;
+    }
+    
+    public void setSuit(Suit suit)
+    {
+       this.suit = suit;
+    }
+    
+    public void getValue()
+    {
+       return value;
+    }
+    
+    public void getSuit()
+    {
+       return suit;
+    }
+    
     /*
     private boolean errorFlag(char value, Suit suit)
     {
@@ -49,9 +71,16 @@
     
     public static void Test()
     {
-      Card test = new Card();
-      System.out.println(test.suit);
+      Suit testSuit = Suit.valueOf("CLUBS");
+       
+      Card test = new Card('K', testSuit);
       System.out.println(test.value);
+      System.out.println(test.suit);
+      test.setValue('J');
+      test.setSuit(Suit.HEARTS);
+      System.out.println(test.value);
+      System.out.println(test.suit);
+
 ;
     }
  }
