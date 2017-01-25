@@ -9,8 +9,10 @@
 * Professor: Jesse Cecil, MS
 */
 
+
 public class Module3
 {
+   
    public static void main(String[] arg)
    {
       //Card.Test();
@@ -19,7 +21,7 @@ public class Module3
    }
 }
  
- 
+
 /**
    Definition of the class Card, which will store a playing cards information
    such as its Value and its Suit this class will also determine if the entered
@@ -280,6 +282,8 @@ class Deck
    private int topCard;
    private static int numPacks;
    
+   topCard = cards.length;
+   
    // Default constructor for Deck
    public Deck()
    {
@@ -358,7 +362,24 @@ class Deck
       {
          System.out.println(i + ", " + testDeck.cards[i]);
       }
-
+      
+      System.out.println("---- HOES");
+      
+      /*
+      testDeck.dealCard();
+      testDeck.dealCard();
+      testDeck.dealCard();
+      testDeck.dealCard();
+      testDeck.dealCard();
+      testDeck.dealCard();*/
+      
+      System.out.println("---- HOES");
+      
+      for(int i = 0; i < 52 * 3; i++)
+      {
+         System.out.println(i + ", " + testDeck.cards[i]);
+      }
+      
    }
     
    public void shuffle()
@@ -372,11 +393,20 @@ class Deck
       }
    }
     
-   /*
+ /*
    public Card dealCard()
    {
+      Card dealtCard = cards[topCard];
       
+      cards[topCard - 1] = null;
+      topCard--;
+      
+      System.out.println("Dealing " + dealtCard);
+      
+      return dealtCard;
    }
+   */
+   /*
    
    public Card inspectCard(int k)
    {
