@@ -17,7 +17,54 @@ public class Module3
    {
       //Card.Test();
       //Hand.Test();
-      Deck.Test();
+      //Deck.Test();
+      
+      
+      
+      
+      
+      
+      /** TESTING Deck Class **
+      Deck testDeck = new Deck(2);
+      System.out.println("Dealing 2 decks! ");
+      
+      for (int i = testDeck.getTopCard(); i > 0; i--)
+      {
+         testDeck.dealCard();
+      }
+      
+      System.out.println("Initializing 2 more decks! ");
+      testDeck.init(2);
+      
+      System.out.println("Shuffling cards! ");
+      testDeck.shuffle();
+      
+      for (int i = testDeck.getTopCard(); i > 0; i--)
+      {
+         testDeck.dealCard();
+      }
+      
+      Deck testSingleDeck = new Deck(1);
+      System.out.println("Dealing 1 decks! ");
+      
+      for (int i = testSingleDeck.getTopCard(); i > 0; i--)
+      {
+         testSingleDeck.dealCard();
+      }
+      
+      System.out.println("Initializing 1 more decks! ");
+      testSingleDeck.init(1);
+      
+      System.out.println("Shuffling cards! ");
+      testSingleDeck.shuffle();
+      
+      for (int i = testSingleDeck.getTopCard(); i > 0; i--)
+      {
+         testSingleDeck.dealCard();
+      }
+      **/
+      
+      
    }
 }
  
@@ -348,12 +395,12 @@ class Deck
              if (count == 52 * numPacks)
                 break;
           }
+       
+       topCard = cards.length - 1;
     }
     
    public void shuffle()
    {
-      
-      
       for (int i = cards.length - 1; i > 0; i--)
       {
          int random = (int)(Math.random()*(i + 1));
@@ -395,6 +442,13 @@ class Deck
 
    public static void Test()
    {
+      
+
+      
+      
+      
+      
+      /*
       Deck testDeck = new Deck(3);
       
       for(int i = 0; i < 52 * 3; i++)
@@ -413,7 +467,6 @@ class Deck
       
       System.out.println("---- HOES");
       
-     
       testDeck.dealCard();
       testDeck.dealCard();
       testDeck.dealCard();
@@ -429,6 +482,7 @@ class Deck
       }
       
       System.out.println(testDeck.inspectCard(400));
+      */
       
    }
 }
