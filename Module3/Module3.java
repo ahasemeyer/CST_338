@@ -411,6 +411,11 @@ class Deck
       
       return dealtCard;
    }
+   
+   public int getTopCard()
+   {
+      return topCard;
+   }
 
    /*
    
