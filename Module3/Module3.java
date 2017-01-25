@@ -187,8 +187,13 @@ class Hand
    
    public static Card playCard() //inprogess
    {
-      Card returnCard = new Card(myCards[numCards].getValue(),myCards[numCards].getSuit());
+      Card returnCard = myCards[numCards - 1];
+      
+      myCards[numCards - 1] = null;
       numCards--;
+      
+      System.out.println("Playing " + returnCard);
+      
       return returnCard;
    }
    
@@ -221,7 +226,22 @@ class Hand
          Hand.takeCard(fourthCard);
       }
       
-      System.out.println("Printing out drawn cards: ");
+      System.out.println("Inspecting Hand: ");
+      
+      for (int i = 0; i < Hand.MAX_CARDS; i++)
+      {
+         System.out.print("(" + i + ") - ");
+         System.out.print(inspectCard(i) + ", ");
+      }
+      
+      System.out.println("Playing all cards in hand: ");
+      
+      for (int i = 0; i < Hand.MAX_CARDS; i++)
+      {
+         Hand.playCard();
+      }
+      
+      System.out.println("Inspecting Hand: ");
       
       for (int i = 0; i < Hand.MAX_CARDS; i++)
       {
