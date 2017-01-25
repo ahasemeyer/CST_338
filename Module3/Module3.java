@@ -15,7 +15,7 @@ public class Module3
    {
       //Card.Test();
       //Hand.Test();
-      //Deck.Test();
+      Deck.Test();
    }
 }
  
@@ -278,28 +278,27 @@ class Deck
    
    private Card[] cards;
    private int topCard;
-   private int numPacks;
+   private static int numPacks;
    
    public Deck()
    {
       numPacks = 1;
-      masterPack = new Card[52 * numPacks];
+      masterPack = new Card[52];
       char[] allValues = {'1', '2', '3', '4', '5', '6' , '7', '8', '9' ,'T', 'J', 'Q', 'K', 'A'};
       
       for (Card.Suit suits : Card.Suit.values())
-         for (int i = 0; i <= allValues.length; i++)
+         for (int i = 0; i < allValues.length; i++)
          {
             masterPack[numPacks] = new Card(allValues[i], suits);
-         }   
-      numPacks++;
+         }    
    }
    
    
    
-   public void Test()
+   public static void Test()
    {
       Deck testDeck = new Deck();
-      System.out.println(testDeck.masterPack);
+      System.out.println(testDeck.Card[1]);
    }
    
 }
