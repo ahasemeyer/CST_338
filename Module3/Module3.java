@@ -9,6 +9,7 @@
 * Professor: Jesse Cecil, MS
 */
 
+import java.util.Scanner;
 
 public class Module3
 {
@@ -19,8 +20,30 @@ public class Module3
       //Hand.Test();
       //Deck.Test();
       
+      /*
+      Scanner userInput = new Scanner(System.in);
       
+      System.out.print("How many hands [1-10]: ");
+      int input = userInput.nextInt();
+      */
       
+      int i = 0;
+      
+      System.out.println("Deck and Hand[]");
+      
+      Deck firstDeck = new Deck(1);
+      Hand[] playerHands = new Hand[5];
+       
+      System.out.println("While LOOP");
+      while(firstDeck.inspectCard(firstDeck.getTopCard()) != null)
+      {
+         playerHands[i].takeCard(firstDeck.dealCard());
+         System.out.println(firstDeck.inspectCard(i));
+         i++;
+         
+         if (i == 5)
+            i = 0;
+      }
       
       
       
