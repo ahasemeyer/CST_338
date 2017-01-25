@@ -15,6 +15,7 @@ public class Module3
    {
       Card.Test();
       Hand.Test();
+      Deck.Test();
    }
 }
  
@@ -279,12 +280,24 @@ class Deck
    private int topCard;
    private int numPacks;
    
-   public Deck(int numPacks)
+   public Deck()
    {
       masterPack = new Card[52];
+      int count = 0;
       
-      
-      
+      for (Card.Suit suits : Card.Suit.values())
+         for (int value = 1; value <= 13; value++) //don't know how to iterate the values yet
+         {
+            masterPack[count] = new Card((char)value, suits);
+            count++;
+         }   
+
+      }
+   }
+   /*
+   public Deck(int numPacks)
+   {
+      masterPack = new Card[52 * numPacks];
    }
     
    public void init(int numPacks)
@@ -311,7 +324,7 @@ class Deck
    {
       
    }
-   
+   */
 }
  
  
