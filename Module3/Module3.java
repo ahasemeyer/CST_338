@@ -8,7 +8,7 @@
 * Course: CST 338 Software Design
 * Professor: Jesse Cecil, MS
 */
- 
+
 public class Module3
 {
    public static void main(String[] arg)
@@ -343,9 +343,18 @@ class Deck
    
    public static void Test()
    {
-      Deck testDeck = new Deck(5);
+      Deck testDeck = new Deck(3);
       
-      for(int i = 0; i < 52 * 5; i++)
+      for(int i = 0; i < 52 * 3; i++)
+      {
+         System.out.println(i + ", " + testDeck.cards[i]);
+      }
+      
+      testDeck.shuffle();
+      
+      System.out.println("---- BTIHCES");
+      
+      for(int i = 0; i < 52 * 3; i++)
       {
          System.out.println(i + ", " + testDeck.cards[i]);
       }
@@ -354,7 +363,13 @@ class Deck
     
    public void shuffle()
    {
-      
+      for (int i = cards.length - 1; i > 0; i--)
+      {
+         int random = (int)(Math.random()*(i + 1));
+         Card temp = cards[i];
+         cards[i] = cards[random];
+         cards[random] = temp;
+      }
    }
     
    /*
