@@ -13,9 +13,9 @@ public class Module3
 {
    public static void main(String[] arg)
    {
-      Card.Test();
-      Hand.Test();
-      Deck.Test();
+      //Card.Test();
+      //Hand.Test();
+      //Deck.Test();
    }
 }
  
@@ -186,7 +186,7 @@ class Hand
       return true;
    }
    
-   public static Card playCard() //inprogess
+   public static Card playCard()
    {
       Card returnCard = myCards[numCards - 1];
       
@@ -282,18 +282,27 @@ class Deck
    
    public Deck()
    {
+      int numPacks = 1;
       masterPack = new Card[52];
-      int count = 0;
+      char[] allValues = {'1', '2', '3', '4', '5', '6' , '7', '8', '9' ,'T', 'J', 'Q', 'K', 'A'};
       
       for (Card.Suit suits : Card.Suit.values())
-         for (int value = 1; value <= 13; value++) //don't know how to iterate the values yet
+         for (int i = 0; i <= allValues.length; i++)
          {
-            masterPack[count] = new Card((char)value, suits);
-            count++;
+            masterPack[numPacks] = new Card(allValues[i], suits);
          }   
-
-      }
+      numPacks++;
    }
+   
+   
+   
+   public void Test()
+   {
+      Deck testDeck = new Deck();
+      System.out.println(testDeck.masterPack);
+   }
+   
+}
    /*
    public Deck(int numPacks)
    {
@@ -325,7 +334,7 @@ class Deck
       
    }
    */
-}
+
  
  
  
