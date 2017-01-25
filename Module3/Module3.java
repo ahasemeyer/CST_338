@@ -185,6 +185,12 @@ class Hand
       return true;
    }
    
+   public static Card playCard() //inprogess
+   {
+      Card returnCard = new Card(myCards[numCards].getValue(),myCards[numCards].getSuit());
+      numCards--;
+      return returnCard;
+   }
    
    public static void Test()
    {
@@ -211,6 +217,9 @@ class Hand
       takeCard(thirdCard);
       System.out.println("values of first 3 cards added to hand 4th should be null");
       System.out.println(myCards[0] + " \n" + myCards[1] + " \n" + myCards[2] + "\n" + myCards[3]);
+      
+      System.out.println("----------TEST DIVIDER--------------");
+      playCard();
    }
 }
 
