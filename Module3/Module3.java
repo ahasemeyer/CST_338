@@ -1,15 +1,14 @@
 /**
-* @author Austin Hasemeyer
-* @author Samuel Roy
-* @author Ali Asrani
+@author Austin Hasemeyer
+@author Samuel Roy
+@author Ali Asrani
 
-* Programming Assignment 3
-* School: CSU, Monterey Bay
-* Course: CST 338 Software Design
-* Professor: Jesse Cecil, MS
+Programming Assignment 3
+School: CSU, Monterey Bay
+Course: CST 338 Software Design
+Professor: Jesse Cecil, MS
 */
 
-import java.util.Scanner;
 
 public class Module3
 {
@@ -20,30 +19,8 @@ public class Module3
       //Hand.Test();
       //Deck.Test();
       
-      /*
-      Scanner userInput = new Scanner(System.in);
       
-      System.out.print("How many hands [1-10]: ");
-      int input = userInput.nextInt();
-      */
       
-      int i = 0;
-      
-      System.out.println("Deck and Hand[]");
-      
-      Deck firstDeck = new Deck(1);
-      Hand[] playerHands = new Hand[5];
-       
-      System.out.println("While LOOP");
-      while(firstDeck.inspectCard(firstDeck.getTopCard()) != null)
-      {
-         playerHands[i].takeCard(firstDeck.dealCard());
-         System.out.println(firstDeck.inspectCard(i));
-         i++;
-         
-         if (i == 5)
-            i = 0;
-      }
       
       
       
@@ -232,25 +209,42 @@ class Card
    
 }
 
+/**
+   Definition of class Hand. This class will collect the cards 
+   that are in a players hand.
+*/
 class Hand
 {
    public static int MAX_CARDS = 100;
     
    private static Card[] myCards;
    private static int numCards;
-     
+    
+   /**
+   Default constructor for Hand() makes an uninitalized hand that can
+   take up to 100 cards
+   */    
    public Hand()
    {
       myCards = new Card[MAX_CARDS];
       numCards = 0;
    }
    
+   /**
+   Will reset Hand back to the inital uninitialized values
+   */
    public static void resetHand()
    {
       myCards = new Card[MAX_CARDS];
       numCards = 0;
    }
-   
+ 
+   /**
+   Will add your card to the array myCards using numCards to count the amount
+   of cards in your hand
+   @param takes an object of type Card
+   @return will return true if the card is accepted
+   */ 
    public static boolean takeCard(Card card)
    {  
       myCards[numCards] = card;
@@ -258,6 +252,10 @@ class Hand
       return true;
    }
    
+   /**
+   Discard the top card from your hand and return it
+   @return returns top card in hand
+   */
    public static Card playCard()
    {
       Card returnCard = myCards[numCards - 1];
@@ -270,6 +268,11 @@ class Hand
       return returnCard;
    }
    
+   /**
+   Returns a card at the appropriate index
+   @param int k, which is the index for the card
+   @return returns card at index k
+   */
    public static Card inspectCard(int k)
    {
       return myCards[k];
@@ -277,71 +280,14 @@ class Hand
    
    public static void Test()
    {
-      Hand testHand = new Hand();
-      Card.Suit Hearts = Card.Suit.HEARTS;
-      Card.Suit Clubs = Card.Suit.CLUBS;
-      Card.Suit Spades = Card.Suit.SPADES;
-      Card.Suit Diamonds = Card.Suit.DIAMONDS;
-      
-      Card firstCard = new Card('5', Hearts);
-      Card secondCard = new Card('T', Clubs);
-      Card thirdCard = new Card('9', Spades);
-      Card fourthCard = new Card('2', Diamonds);
-      
-      
-      System.out.println("Drawing 100 cards");
-      
-      for (int i = 0; i < Hand.MAX_CARDS / 4; i++)
-      {
-         Hand.takeCard(firstCard);
-         Hand.takeCard(secondCard);
-         Hand.takeCard(thirdCard);
-         Hand.takeCard(fourthCard);
-      }
-      
-      System.out.println("Inspecting Hand: ");
-      
-      for (int i = 0; i < Hand.MAX_CARDS; i++)
-      {
-         System.out.print("(" + i + ") - ");
-         System.out.print(inspectCard(i) + ", ");
-      }
-      
-      System.out.println("Playing all cards in hand: ");
-      
-      for (int i = 0; i < Hand.MAX_CARDS; i++)
-      {
-         Hand.playCard();
-      }
-      
-      System.out.println("Inspecting Hand: ");
-      
-      for (int i = 0; i < Hand.MAX_CARDS; i++)
-      {
-         System.out.print(i + " - ");
-         System.out.print(inspectCard(i) + ", ");
-      }
-
-      /*
-      //System.out.println("values of first 3 cards added to hand 4th should be null");
-      System.out.println(myCards[0] + " \n" + myCards[1] + " \n" + myCards[2] + "\n" + myCards[3]);
-      
-      resetHand();
-      System.out.println("Aftrer resetHand all should be Null");
-      System.out.println(myCards[0] + " \n" + myCards[1] + " \n" + myCards[2] + "\n" + myCards[3]);
-      
-      takeCard(firstCard);
-      takeCard(secondCard);
-      takeCard(thirdCard);
-      System.out.println("values of first 3 cards added to hand 4th should be null");
-      System.out.println(myCards[0] + " \n" + myCards[1] + " \n" + myCards[2] + "\n" + myCards[3]);
-      
-      System.out.println("----------TEST DIVIDER--------------");
-      //playCard();
-       */
+      /* Test methods of type Hand */
    }
 }
 
+/**
+Defintion of the class Deck which will create a Deck of cards or multiple
+decks of cards and perform various functions on them
+*/
 class Deck
 {
    public final int MAX_CARDS = 6 * 52;
@@ -352,9 +298,11 @@ class Deck
    private int topCard;
    private static int numPacks;
    
+   /**
+   Allocates a master pack that is 52 cards in order
+   */
    private static void allocateMasterPack()
    {
-      // create master pack
       masterPack = new Card[52];
       char[] allValues = {'2', '3', '4', '5', '6' , '7', '8', '9' ,'T', 'J', 'Q', 'K', 'A'};
       
@@ -371,13 +319,18 @@ class Deck
          }  
    }
    
-   // Default constructor for Deck
+   /**
+   Default constructor for Deck
+   */
    public Deck()
    {
       allocateMasterPack();     
    }
    
-   // Overload Deck
+   /**
+   Will create decks depending on the amount of packs that you would like to use
+   @param Number of Packs
+   */
    public Deck(int numPacks)
    {
       Deck master = new Deck();
@@ -399,7 +352,12 @@ class Deck
       
       topCard = cards.length - 1;
      }
-   
+     
+   /**
+   Reinitiates a master pack that is unaltered depending on the number of packs
+   you would like to use
+   @param Number of Packs
+   */
     public void init(int numPacks)
     {
        Deck master = new Deck();
@@ -421,7 +379,10 @@ class Deck
        
        topCard = cards.length - 1;
     }
-    
+
+   /**
+   Shuffles the deck
+   */    
    public void shuffle()
    {
       for (int i = cards.length - 1; i > 0; i--)
@@ -433,7 +394,11 @@ class Deck
       }
    }
     
- 
+   /**
+   Will deal a card from the deck while removing it from the deck so it can 
+   not be delt again
+   @return the card that was delt
+   */
    public Card dealCard()
    {
       
@@ -446,12 +411,21 @@ class Deck
       
       return dealtCard;
    }
-   
+
+   /**
+   Accessor for the top card
+   @return topCard
+   */
    public int getTopCard()
    {
       return topCard;
    }
    
+   /**
+   Will give you a card at and index
+   @param the index of your card
+   @return the card at the given index
+   */
    public Card inspectCard(int k)
    {
       if(k < topCard && k >= 0)
@@ -465,48 +439,7 @@ class Deck
 
    public static void Test()
    {
-      
-
-      
-      
-      
-      
-      /*
-      Deck testDeck = new Deck(3);
-      
-      for(int i = 0; i < 52 * 3; i++)
-      {
-         System.out.println(i + ", " + testDeck.cards[i]);
-      }
-      
-      testDeck.shuffle();
-      
-      System.out.println("---- BTIHCES");
-      
-      for(int i = 0; i < 52 * 3; i++)
-      {
-         System.out.println(i + ", " + testDeck.cards[i]);
-      }
-      
-      System.out.println("---- HOES");
-      
-      testDeck.dealCard();
-      testDeck.dealCard();
-      testDeck.dealCard();
-      testDeck.dealCard();
-      testDeck.dealCard();
-      testDeck.dealCard();
-      
-      System.out.println("---- HOES");
-      
-      for(int i = 0; i < 52 * 3; i++)
-      {
-         System.out.println(i + ", " + testDeck.cards[i]);
-      }
-      
-      System.out.println(testDeck.inspectCard(400));
-      */
-      
+        /*Use to test methods of type Deck */
    }
 }
  
