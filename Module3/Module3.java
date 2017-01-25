@@ -137,7 +137,7 @@ class Card
    private static boolean isValid(char value, Suit suit)
    {
       Suit[] allSuits = Suit.values();
-      char[] allValues = {'1', '2', '3', '4', '5', '6' , '7', '8', '9' ,'T', 'J', 'Q', 'K', 'A'};
+      char[] allValues = {'2', '3', '4', '5', '6' , '7', '8', '9' ,'T', 'J', 'Q', 'K', 'A'};
       for(int i = 0; i < allSuits.length; i++)  //First checks to see if suit is in allSuits
       {
          if (suit == allSuits[i])
@@ -282,14 +282,19 @@ class Deck
    
    public Deck()
    {
-      numPacks = 1;
       masterPack = new Card[52];
-      char[] allValues = {'1', '2', '3', '4', '5', '6' , '7', '8', '9' ,'T', 'J', 'Q', 'K', 'A'};
+      char[] allValues = {'2', '3', '4', '5', '6' , '7', '8', '9' ,'T', 'J', 'Q', 'K', 'A'};
+      
+      int count = 0;
       
       for (Card.Suit suits : Card.Suit.values())
          for (int i = 0; i < allValues.length; i++)
          {
-            masterPack[numPacks] = new Card(allValues[i], suits);
+            masterPack[count] = new Card(allValues[i], suits);
+            count++;
+
+            if (count == 52)
+               break;
          }    
    }
    
@@ -297,17 +302,41 @@ class Deck
    
    public static void Test()
    {
-      Deck testDeck = new Deck();
-      System.out.println(testDeck.Card[1]);
+      Deck testDeck = new Deck(5);
+      
+      for(int i = 0; i < 52 * 5; i++)
+      {
+         System.out.println(i + ", " + testDeck.cards[i]);
+      }
+
    }
    
-}
-   /*
+   
    public Deck(int numPacks)
    {
-      masterPack = new Card[52 * numPacks];
-   }
+      Deck master = new Deck();
+      
+      cards = new Card[52 * numPacks];
+      
+      int count = 0;
+      
+      for (int i = 0; i < numPacks; i++)
+         for (int k = 0; k < 52; k++)
+         {
+            cards[count] = master.masterPack[k];
+            
+            count++;
+            
+            if (count == 52 * numPacks)
+               break;
+           
+         }
+      }
+      
+   
+}
     
+   /*
    public void init(int numPacks)
    {
       
