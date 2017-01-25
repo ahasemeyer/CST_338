@@ -9,6 +9,7 @@ Course: CST 338 Software Design
 Professor: Jesse Cecil, MS
 */
 
+import java.util.Scanner;
 
 public class Module3
 {
@@ -19,11 +20,74 @@ public class Module3
       //Hand.Test();
       //Deck.Test();
       
+      int count = 0;
+      int input = 4;
+      
+      Deck firstDeck = new Deck(1);
+      Hand[] playerHand = new Hand[input];
+      
+      for (int i = 0; i < input; i++)
+      {
+         playerHand[i] = new Hand();
+      }
+
+      
+      //playerHand[0].takeCard(firstDeck.dealCard()); 
+      //System.out.println(playerHand[0].inspectCard(0));
       
       
+      while(firstDeck.inspectCard(firstDeck.getTopCard() - 1) != null)
+      {
+         playerHand[count].takeCard(firstDeck.dealCard());
+         
+         count++;
+         
+         if(count == input)
+            count = 0;
+      }
+
+      for (int i = 0; i < input; i++)
+      {
+         System.out.println("\nHand " + i + " ");
+         
+         for(int j = 0; j < 52/count; j++)
+         {
+            System.out.print(playerHand[i].inspectCard(j) + ", ");
+         }
+         
+      }
       
+      firstDeck.init(1);
       
+      for (int i = 0; i < input; i++)
+      {
+         playerHand[i].resetHand();
+      }
       
+      firstDeck.shuffle();
+      
+      while(firstDeck.inspectCard(firstDeck.getTopCard() - 1) != null)
+      {
+         playerHand[count].takeCard(firstDeck.dealCard());
+         
+         count++;
+         
+         if(count == input)
+            count = 0;
+      }
+
+      for (int i = 0; i < input; i++)
+      {
+         System.out.println("\nHand " + i + " ");
+         
+         for(int j = 0; j < 52/count; j++)
+         {
+            System.out.print(playerHand[i].inspectCard(j) + ", ");
+         }
+         
+      }
+      
+     
       /** TESTING Deck Class **
       Deck testDeck = new Deck(2);
       System.out.println("Dealing 2 decks! ");
