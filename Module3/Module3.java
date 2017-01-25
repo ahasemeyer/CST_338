@@ -282,8 +282,8 @@ class Deck
    private int topCard;
    private static int numPacks;
    
-   topCard = cards.length;
    
+  
    // Default constructor for Deck
    public Deck()
    {
@@ -302,6 +302,7 @@ class Deck
             if (count == 52)
                break;
          }    
+      
    }
    
    // Overload Deck
@@ -323,6 +324,8 @@ class Deck
             if (count == 52 * numPacks)
                break;
          }
+      
+      topCard = cards.length - 1;
      }
    
     public void init(int numPacks)
@@ -365,13 +368,13 @@ class Deck
       
       System.out.println("---- HOES");
       
-      /*
+     
       testDeck.dealCard();
       testDeck.dealCard();
       testDeck.dealCard();
       testDeck.dealCard();
       testDeck.dealCard();
-      testDeck.dealCard();*/
+      testDeck.dealCard();
       
       System.out.println("---- HOES");
       
@@ -384,6 +387,8 @@ class Deck
     
    public void shuffle()
    {
+      
+      
       for (int i = cards.length - 1; i > 0; i--)
       {
          int random = (int)(Math.random()*(i + 1));
@@ -393,19 +398,20 @@ class Deck
       }
    }
     
- /*
+ 
    public Card dealCard()
    {
+      
       Card dealtCard = cards[topCard];
       
-      cards[topCard - 1] = null;
+      cards[topCard] = null;
       topCard--;
       
       System.out.println("Dealing " + dealtCard);
       
       return dealtCard;
    }
-   */
+
    /*
    
    public Card inspectCard(int k)
