@@ -192,20 +192,38 @@ class Hand
       return returnCard;
    }
    
+   public static Card inspectCard(int k)
+   {
+      return myCards[k];
+   }
+   
    public static void Test()
    {
       Hand testHand = new Hand();
       Card.Suit Hearts = Card.Suit.HEARTS;
       Card.Suit Clubs = Card.Suit.CLUBS;
       Card.Suit Spades = Card.Suit.SPADES;
+      Card.Suit Diamonds = Card.Suit.DIAMONDS;
+      
       Card firstCard = new Card('5', Hearts);
       Card secondCard = new Card('T', Clubs);
       Card thirdCard = new Card('9', Spades);
+      Card fourthCard = new Card('2', Diamonds);
       
-      takeCard(firstCard);
-      takeCard(secondCard);
-      takeCard(thirdCard);
-      System.out.println("values of first 3 cards added to hand 4th should be null");
+      for (int i = 0; i < Hand.MAX_CARDS; i++)
+      {
+         
+         takeCard(firstCard);
+         takeCard(secondCard);
+         takeCard(thirdCard);
+         takeCard(fourthCard);
+         
+         System.out.println(i);
+         System.out.print(myCards[i] + ", ");
+      }
+
+      /*
+      //System.out.println("values of first 3 cards added to hand 4th should be null");
       System.out.println(myCards[0] + " \n" + myCards[1] + " \n" + myCards[2] + "\n" + myCards[3]);
       
       resetHand();
@@ -219,7 +237,8 @@ class Hand
       System.out.println(myCards[0] + " \n" + myCards[1] + " \n" + myCards[2] + "\n" + myCards[3]);
       
       System.out.println("----------TEST DIVIDER--------------");
-      playCard();
+      //playCard();
+       */
    }
 }
 
