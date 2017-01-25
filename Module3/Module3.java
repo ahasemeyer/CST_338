@@ -282,8 +282,8 @@ class Deck
    
    public Deck()
    {
-      int numPacks = 1;
-      masterPack = new Card[52];
+      numPacks = 1;
+      masterPack = new Card[52 * numPacks];
       char[] allValues = {'1', '2', '3', '4', '5', '6' , '7', '8', '9' ,'T', 'J', 'Q', 'K', 'A'};
       
       for (Card.Suit suits : Card.Suit.values())
