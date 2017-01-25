@@ -210,16 +210,23 @@ class Hand
       Card thirdCard = new Card('9', Spades);
       Card fourthCard = new Card('2', Diamonds);
       
+      
+      System.out.println("Drawing 100 cards");
+      
+      for (int i = 0; i < Hand.MAX_CARDS / 4; i++)
+      {
+         Hand.takeCard(firstCard);
+         Hand.takeCard(secondCard);
+         Hand.takeCard(thirdCard);
+         Hand.takeCard(fourthCard);
+      }
+      
+      System.out.println("Printing out drawn cards: ");
+      
       for (int i = 0; i < Hand.MAX_CARDS; i++)
       {
-         
-         takeCard(firstCard);
-         takeCard(secondCard);
-         takeCard(thirdCard);
-         takeCard(fourthCard);
-         
-         System.out.println(i);
-         System.out.print(myCards[i] + ", ");
+         System.out.print(i + " - ");
+         System.out.println(inspectCard(i) + ", ");
       }
 
       /*
