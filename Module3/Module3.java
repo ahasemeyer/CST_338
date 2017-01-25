@@ -246,7 +246,7 @@ class Hand
       for (int i = 0; i < Hand.MAX_CARDS; i++)
       {
          System.out.print(i + " - ");
-         System.out.println(inspectCard(i) + ", ");
+         System.out.print(inspectCard(i) + ", ");
       }
 
       /*
@@ -269,8 +269,6 @@ class Hand
    }
 }
 
-/*
-
 class Deck
 {
    public final int MAX_CARDS = 6 * 52;
@@ -280,9 +278,12 @@ class Deck
    private Card[] cards;
    private int topCard;
    private int numPacks;
-    
+   
    public Deck(int numPacks)
    {
+      masterPack = new Card[52];
+      
+      
       
    }
     
@@ -312,9 +313,6 @@ class Deck
    }
    
 }
- 
- 
-*/
  
  
  
