@@ -347,7 +347,55 @@ class Deck
                 break;
           }
     }
+    
+   public void shuffle()
+   {
+      
+      
+      for (int i = cards.length - 1; i > 0; i--)
+      {
+         int random = (int)(Math.random()*(i + 1));
+         Card temp = cards[i];
+         cards[i] = cards[random];
+         cards[random] = temp;
+      }
+   }
+    
+ 
+   public Card dealCard()
+   {
+      
+      Card dealtCard = cards[topCard];
+      
+      cards[topCard] = null;
+      topCard--;
+      
+      System.out.println("Dealing " + dealtCard);
+      
+      return dealtCard;
+   }
    
+   public int getTopCard()
+   {
+      return topCard;
+   }
+   
+   public Card inspectCard(int k)
+   {
+      if(k < topCard && k >= 0)
+         return cards[k];
+      else
+      {
+         System.out.print("Not an actual card: ");
+         return null;
+      }
+   }
+    
+   private static void allocateMasterPack()
+   {
+      
+   }
+
    public static void Test()
    {
       Deck testDeck = new Deck(3);
@@ -383,53 +431,9 @@ class Deck
          System.out.println(i + ", " + testDeck.cards[i]);
       }
       
-   }
-    
-   public void shuffle()
-   {
-      
-      
-      for (int i = cards.length - 1; i > 0; i--)
-      {
-         int random = (int)(Math.random()*(i + 1));
-         Card temp = cards[i];
-         cards[i] = cards[random];
-         cards[random] = temp;
-      }
-   }
-    
- 
-   public Card dealCard()
-   {
-      
-      Card dealtCard = cards[topCard];
-      
-      cards[topCard] = null;
-      topCard--;
-      
-      System.out.println("Dealing " + dealtCard);
-      
-      return dealtCard;
-   }
-   
-   public int getTopCard()
-   {
-      return topCard;
-   }
-
-   /*
-   
-   public Card inspectCard(int k)
-   {
+      System.out.println(testDeck.inspectCard(400));
       
    }
-    
-   private static void allocateMasterPack()
-   {
-      
-   }
-   */
-
 }
  
  
