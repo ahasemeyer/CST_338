@@ -282,10 +282,7 @@ class Deck
    private int topCard;
    private static int numPacks;
    
-   
-  
-   // Default constructor for Deck
-   public Deck()
+   private static void allocateMasterPack()
    {
       // create master pack
       masterPack = new Card[52];
@@ -301,8 +298,13 @@ class Deck
 
             if (count == 52)
                break;
-         }    
-      
+         }  
+   }
+   
+   // Default constructor for Deck
+   public Deck()
+   {
+      allocateMasterPack();     
    }
    
    // Overload Deck
@@ -389,11 +391,6 @@ class Deck
          System.out.print("Not an actual card: ");
          return null;
       }
-   }
-    
-   private static void allocateMasterPack()
-   {
-      
    }
 
    public static void Test()
