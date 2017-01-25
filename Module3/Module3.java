@@ -280,8 +280,10 @@ class Deck
    private int topCard;
    private static int numPacks;
    
+   // Default constructor for Deck
    public Deck()
    {
+      // create master pack
       masterPack = new Card[52];
       char[] allValues = {'2', '3', '4', '5', '6' , '7', '8', '9' ,'T', 'J', 'Q', 'K', 'A'};
       
@@ -298,20 +300,7 @@ class Deck
          }    
    }
    
-   
-   
-   public static void Test()
-   {
-      Deck testDeck = new Deck(5);
-      
-      for(int i = 0; i < 52 * 5; i++)
-      {
-         System.out.println(i + ", " + testDeck.cards[i]);
-      }
-
-   }
-   
-   
+   // Overload Deck
    public Deck(int numPacks)
    {
       Deck master = new Deck();
@@ -329,17 +318,38 @@ class Deck
             
             if (count == 52 * numPacks)
                break;
-           
          }
-      }
-      
+     }
    
-}
-    
-   /*
-   public void init(int numPacks)
+    public void init(int numPacks)
+    {
+       Deck master = new Deck();
+       
+       cards = new Card[52 * numPacks];
+       
+       int count = 0;
+       
+       for (int i = 0; i < numPacks; i++)
+          for (int k = 0; k < 52; k++)
+          {
+             cards[count] = master.masterPack[k];
+             
+             count++;
+             
+             if (count == 52 * numPacks)
+                break;
+          }
+    }
+   
+   public static void Test()
    {
+      Deck testDeck = new Deck(5);
       
+      for(int i = 0; i < 52 * 5; i++)
+      {
+         System.out.println(i + ", " + testDeck.cards[i]);
+      }
+
    }
     
    public void shuffle()
@@ -347,6 +357,7 @@ class Deck
       
    }
     
+   /*
    public Card dealCard()
    {
       
@@ -363,7 +374,7 @@ class Deck
    }
    */
 
- 
+}
  
  
  
