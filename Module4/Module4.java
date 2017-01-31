@@ -15,3 +15,12 @@ public class Module4
    
 }
 
+public interface BarcodeIO
+{
+   public boolean scan(BarcodImage bc);
+   public boolean readText(String text);
+   public boolean generateImageFromText();
+   public boolean translateImageToText();
+   public void displayTextToConsole();
+   public void displayImageToConsole();
+}
