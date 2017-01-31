@@ -66,7 +66,19 @@ class BarcodeImage implements Cloneable
    }
       
    
+   char getPixel(int row, int col)
+   {
+      //if(row <= MAX_WIDTH && col <= MAX_HEIGHT)
+      //{
+         return image_data[col][row];
+      //}
 
+   }
+   
+   char setPixel(int row, int col, char value)
+   {
+      return image_data[row][col] = value;
+   }
 
    
    
@@ -116,15 +128,28 @@ class BarcodeImage implements Cloneable
       BarcodeImage testArray = new BarcodeImage(sImageIn);
       testArray.displayToConsole();
       
-
+      System.out.print("\n\n -----------------Test getPixel--------------------\n\n");    
+      System.out.println("The Pixel is 10, 16: " + testArray.getPixel(10, 16));
+      testArray.displayToConsole();
+      
+      System.out.print("\n\n -----------------Test setPixel--------------------\n\n");   
+      System.out.println("Set Pixel 10, 16 to: " + testArray.setPixel(10, 16, '-'));
+      testArray.displayToConsole();
 
    }
-   /*
-    public Object clone()
-    {
-       
-    }
-    *
+   
+   public Object clone()
+   {
+      try
+      {
+         return super.clone();
+      }
+      catch (CloneNotSupportedException e)
+      {
+         return null;
+      }
+   }
+    
 }
 
 class DataMatrix implements BarcodeIO
