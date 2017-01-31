@@ -24,3 +24,13 @@ public interface BarcodeIO
    public void displayTextToConsole();
    public void displayImageToConsole();
 }
+
+public class BarcodeImage implements Cloneable
+{
+   
+}
+
+public class DataMatrix implements BarcodeIO
+{
+   
+}
