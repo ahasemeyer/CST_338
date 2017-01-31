@@ -12,23 +12,25 @@ Professor: Jesse Cecil, MS
 
 public class Module4
 {
-   public static main(String[] args)
+   public static void main(String[] args)
    {
       BarcodeImage.Test();
    }
 }
 
-public interface BarcodeIO
+interface BarcodeIO
 {
-   public boolean scan(BarcodImage bc);
+   /*
+   public boolean scan(BarcodeImage bc);
    public boolean readText(String text);
    public boolean generateImageFromText();
    public boolean translateImageToText();
    public void displayTextToConsole();
    public void displayImageToConsole();
+   */
 }
 
-public class BarcodeImage implements Cloneable
+class BarcodeImage implements Cloneable
 {
    public static final int MAX_HEIGHT = 30;
    public static final int MAX_WIDTH = 65;
@@ -37,21 +39,21 @@ public class BarcodeImage implements Cloneable
    
    public BarcodeImage()
    {
-      image_data[][] = new char[MAX_WIDTH][MAX_HEIGHT];
-      for(int i = 0; i < MAX_WIDTH; i++)
+      char image_data[][] = new char[MAX_WIDTH][MAX_HEIGHT];
+      for(int i = 0; i < MAX_WIDTH - 1; i++)
       {
-         for(int j = 0; j < MAX_HEIGHT; j++)
+         for(int j = 0; j < MAX_HEIGHT - 1; j++)
          {
             image_data[i][j] = '*';
          }
       } 
    }
    
-   public displayToConsole()
+   public void displayToConsole()
    {
-      for(int i = 0; i < MAX_WIDTH; i++)
+      for(int i = 0; i < MAX_WIDTH - 1; i++)
       {
-         for(int j = 0; j < MAX_HEIGHT; j++)
+         for(int j = 0; j < MAX_HEIGHT - 1; j++)
          {
             System.out.print(image_data[i][j]);
          }
@@ -60,9 +62,10 @@ public class BarcodeImage implements Cloneable
    }
    
    
-   public void Test()
+   public static void Test()
    {
-      
+      BarcodeImage testImage = new BarcodeImage();
+      testImage.displayToConsole();
    }
    /*
     public Object clone()
@@ -72,7 +75,7 @@ public class BarcodeImage implements Cloneable
     */
 }
 
-public class DataMatrix implements BarcodeIO
+class DataMatrix implements BarcodeIO
 {
    public static final char BLACK_CHAR= '*';
    public static final char WHITE_CHAR = ' ';
