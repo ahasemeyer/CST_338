@@ -53,15 +53,30 @@ class BarcodeImage implements Cloneable
    
    public BarcodeImage(String[] str_data)
    {
-      boolean image_data[][] = new boolean[str_data.length()][str_data[i].length()];
-      for (int i = 0; i < str_data.length(); i++)
+      boolean image_data[][] = new boolean[MAX_HEIGHT][MAX_WIDTH];
+      
+      for(int i = MAX_HEIGHT; i > 0; i--)
       {
-         for (int j = 0; j < str_data[i].length(); j++)
+         for(int j = MAX_WIDTH; j > 0; j--)
          {
-         image_data[i][j] = str_data;
+            
          }
       }
+      
    }
+   
+   
+   
+      /*()
+      for (int i = 0; i < str_data.length; i++)
+      {
+         for (int k = 0; k < str_data[k].length(); k++)
+         {
+            boolean image_data[][] = new boolean[i][k];
+         }
+      }
+      */
+
    
    
    
@@ -89,7 +104,7 @@ class BarcodeImage implements Cloneable
     {
        
     }
-    */
+    *
 }
 
 class DataMatrix implements BarcodeIO
