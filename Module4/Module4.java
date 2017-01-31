@@ -27,6 +27,9 @@ public interface BarcodeIO
 
 public class BarcodeImage implements Cloneable
 {
+   public static final int MAX_HEIGHT = 30;
+   
+   private boolean[][] image_data;
    /*
     public Object clone()
     {
@@ -37,6 +40,13 @@ public class BarcodeImage implements Cloneable
 
 public class DataMatrix implements BarcodeIO
 {
+   public static final char BLACK_CHAR= '*';
+   public static final char WHITE_CHAR = ' ';
+   
+   private BarcodeImage image;
+   private String text;
+   private int actualWidth, actualHeight;
+   
    /*
    public boolean scan(BarcodImage bc)
    {
