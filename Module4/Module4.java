@@ -53,6 +53,7 @@ class BarcodeImage implements Cloneable
    
    public BarcodeImage(String[] str_data)
    {
+      //needs to check if str_dat is okay
       char[] charArray = new char[MAX_HEIGHT];
       
       for (int i = MAX_HEIGHT - str_data.length; i > 0; i--)
@@ -77,6 +78,7 @@ class BarcodeImage implements Cloneable
    
    char setPixel(int row, int col, char value)
    {
+      //needs condition
       return image_data[row][col] = value;
    }
 
