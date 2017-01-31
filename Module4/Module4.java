@@ -55,12 +55,12 @@ class BarcodeImage implements Cloneable
    {
       char[] charArray = new char[MAX_HEIGHT];
       
-      for (int i = 0; i < str_data.length; i++)
+      for (int i = MAX_HEIGHT - str_data.length; i > 0; i--)
       {
          charArray = str_data[i].toCharArray();
          for (int j = 0; j < charArray.length; j++)
          {
-            image_data[MAX_HEIGHT - i - 1][j] = charArray[j];
+            image_data[i + (MAX_HEIGHT - str_data.length)][j] = charArray[j];
          }
       }
    }
