@@ -39,21 +39,38 @@ class BarcodeImage implements Cloneable
    
    public BarcodeImage()
    {
-      char image_data[][] = new char[MAX_WIDTH][MAX_HEIGHT];
-      for(int i = 0; i < MAX_WIDTH - 1; i++)
+      boolean image_data[][] = new boolean[MAX_HEIGHT][MAX_WIDTH];
+      for(int i = 0; i < MAX_HEIGHT; i++)
       {
-         for(int j = 0; j < MAX_HEIGHT - 1; j++)
+         for(int j = 0; j < MAX_WIDTH; j++)
          {
-            image_data[i][j] = '*';
+            image_data[i][j] = false;
+            System.out.print(image_data[i][j]);
          }
+         System.out.println(i);
       } 
    }
    
+   public BarcodeImage(String[] str_data)
+   {
+      boolean image_data[][] = new boolean[str_data.length()][str_data[i].length()];
+      for (int i = 0; i < str_data.length(); i++)
+      {
+         for (int j = 0; j < str_data[i].length(); j++)
+         {
+         image_data[i][j] = str_data;
+         }
+      }
+   }
+   
+   
+   
+   
    public void displayToConsole()
    {
-      for(int i = 0; i < MAX_WIDTH - 1; i++)
+      for(int i = 0; i < MAX_WIDTH; i++)
       {
-         for(int j = 0; j < MAX_HEIGHT - 1; j++)
+         for(int j = 0; j < MAX_HEIGHT; j++)
          {
             System.out.print(image_data[i][j]);
          }
@@ -65,7 +82,7 @@ class BarcodeImage implements Cloneable
    public static void Test()
    {
       BarcodeImage testImage = new BarcodeImage();
-      testImage.displayToConsole();
+     // testImage.displayToConsole();
    }
    /*
     public Object clone()
@@ -84,8 +101,9 @@ class DataMatrix implements BarcodeIO
    private String text;
    private int actualWidth, actualHeight;
    
+   
    /*
-   public boolean scan(BarcodImage bc)
+   public boolean scan(BarcodeImage bc)
    {
       
    }
