@@ -27,10 +27,45 @@ public interface BarcodeIO
 
 public class BarcodeImage implements Cloneable
 {
-   
+   /*
+    public Object clone()
+    {
+       
+    }
+    */
 }
 
 public class DataMatrix implements BarcodeIO
 {
+   /*
+   public boolean scan(BarcodImage bc)
+   {
+      
+   }
    
+   public boolean readText(String text)
+   {
+      
+   }
+   
+   public boolean generateImageFromText()
+   {
+      
+   }
+   
+   public boolean translateImageToText()
+   {
+      
+   }
+   
+   public void displayTextToConsole()
+   {
+      
+   }
+   
+   public void displayImageToConsole()
+   {
+      
+   }
+   */
 }
