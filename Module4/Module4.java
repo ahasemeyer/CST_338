@@ -68,9 +68,7 @@ class BarcodeImage implements Cloneable
    
 
    public BarcodeImage(BarcodeImage object)
-   {
-      BarcodeImage temp = new BarcodeImage();
-      
+   {   
       for(int i = 0; i < MAX_HEIGHT; i++)
       {
          for(int j = 0; j < MAX_WIDTH; j++)
