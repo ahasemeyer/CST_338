@@ -8,16 +8,78 @@ School: CSU, Monterey Bay
 Course: CST 338 Software Design
 Professor: Jesse Cecil, MS
 */
-
+import java.lang.Integer;
 
 public class Module4
 {
    public static void main(String[] args)
    {
-      //BarcodeImage.Test();
-      DataMatrix.Test();
+      String[] sImageIn =
+      {
+         "                                               ",
+         "                                               ",
+         "                                               ",
+         "     * * * * * * * * * * * * * * * * * * * * * ",
+         "     *                                       * ",
+         "     ****** **** ****** ******* ** *** *****   ",
+         "     *     *    ****************************** ",
+         "     * **    * *        **  *    * * *   *     ",
+         "     *   *    *  *****    *   * *   *  **  *** ",
+         "     *  **     * *** **   **  *    **  ***  *  ",
+         "     ***  * **   **  *   ****    *  *  ** * ** ",
+         "     *****  ***  *  * *   ** ** **  *   * *    ",
+         "     ***************************************** ",  
+         "                                               ",
+         "                                               ",
+         "                                               "
+
+      };      
+            
+         
       
-   }
+      String[] sImageIn_2 =
+      {
+            "                                          ",
+            "                                          ",
+            "* * * * * * * * * * * * * * * * * * *     ",
+            "*                                    *    ",
+            "**** *** **   ***** ****   *********      ",
+            "* ************ ************ **********    ",
+            "** *      *    *  * * *         * *       ",
+            "***   *  *           * **    *      **    ",
+            "* ** * *  *   * * * **  *   ***   ***     ",
+            "* *           **    *****  *   **   **    ",
+            "****  *  * *  * **  ** *   ** *  * *      ",
+            "**************************************    ",
+            "                                          ",
+            "                                          ",
+            "                                          ",
+            "                                          "
+
+      };
+      
+     
+      BarcodeImage bc = new BarcodeImage(sImageIn);
+      DataMatrix dm = new DataMatrix(bc);
+     
+      // First secret message
+      dm.translateImageToText();
+      dm.displayTextToConsole();
+      dm.displayImageToConsole();
+      
+      // second secret message
+      bc = new BarcodeImage(sImageIn_2);
+      dm.scan(bc);
+      dm.translateImageToText();
+      dm.displayTextToConsole();
+      dm.displayImageToConsole();
+      
+      // create your own message
+      dm.readText("What a great resume builder this is!");
+      dm.generateImageFromText();
+      dm.displayTextToConsole();
+      dm.displayImageToConsole();
+   }  
 }
 
 interface BarcodeIO
@@ -25,10 +87,8 @@ interface BarcodeIO
    
    public boolean scan(BarcodeImage bc);
    public boolean readText(String text);
-   /*
    public boolean generateImageFromText();
    public boolean translateImageToText();
-   */
    public void displayTextToConsole();
    public void displayImageToConsole();
    
@@ -58,7 +118,7 @@ class BarcodeImage implements Cloneable
    {
       //needs to check if str_dat is okay
       char[] charArray = new char[MAX_HEIGHT];
-      
+
       for (int i = MAX_HEIGHT - str_data.length; i > 0; i--)
       {
          charArray = str_data[i].toCharArray();
@@ -215,12 +275,19 @@ class DataMatrix implements BarcodeIO
       actualHeight = 0;
    }
    
-   /* 
+    
    public boolean generateImageFromText()
    {
+      char[] arrayText = text.toCharArray();
+      //System.out.println(Integer.toBinaryString((int)arrayText[0]));
       
+            for(int i = 0; i < arrayText.length; i++)
+            {
+               System.out.println(Integer.toBinaryString((int)arrayText[i]));           
+            }          
+      return true;
    }
-   */
+   
    
    
    public boolean translateImageToText()
@@ -281,7 +348,7 @@ class DataMatrix implements BarcodeIO
             System.out.print(' ');
          }
          }
-      System.out.println(i);
+      System.out.println();
       } 
    }
    
@@ -430,8 +497,147 @@ class DataMatrix implements BarcodeIO
       //testDmStr.displayTextToConsole();
       //testDmStr.displayImageToConsole(); 
       //System.out.println("\n\n-------------Test Image with shift---------------\n\n");  
-      testDM.displayImageToConsole();
-      testDM.translateImageToText();
+      //testDM.displayImageToConsole();
+      //testDM.translateImageToText();
+      testDM.generateImageFromText();
       
    }   
 }
+
+
+/*
+Test Run
+
+CSUMB CSIT online program is top notch.undefined
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+* * * * * * * * * * * * * * * * * * * * *
+*                                       *
+****** **** ****** ******* ** *** *****
+*     *    ******************************
+* **    * *        **  *    * * *   *
+*   *    *  *****    *   * *   *  **  ***
+*  **     * *** **   **  *    **  ***  *
+***  * **   **  *   ****    *  *  ** * **
+*****  ***  *  * *   ** ** **  *   * *
+*****************************************
+ É ? C A å ? A ß ? A ? ? Å ? ?         undefined
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ * * * * * * * * * * * * * * * *
+                                *
+*** **   ***** ****   *********
+********* ************ **********
+     *    *  * * *         * *
+ *  *           * **    *      **
+* *  *   * * * **  *   ***   ***
+         **    *****  *   **   **
+ *  * *  * **  ** *   ** *  * *
+*********************************
+
+1010111
+1101000
+1100001
+1110100
+100000
+1100001
+100000
+1100111
+1110010
+1100101
+1100001
+1110100
+100000
+1110010
+1100101
+1110011
+1110101
+1101101
+1100101
+100000
+1100010
+1110101
+1101001
+1101100
+1100100
+1100101
+1110010
+100000
+1110100
+1101000
+1101001
+1110011
+100000
+1101001
+1110011
+100001
+What a great resume builder this is!
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ * * * * * * * * * * * * * * * *
+                                *
+*** **   ***** ****   *********
+********* ************ **********
+     *    *  * * *         * *
+ *  *           * **    *      **
+* *  *   * * * **  *   ***   ***
+         **    *****  *   **   **
+ *  * *  * **  ** *   ** *  * *
+*********************************
+
+*/
+
+
+
