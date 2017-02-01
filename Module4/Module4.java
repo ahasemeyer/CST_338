@@ -22,9 +22,10 @@ public class Module4
 
 interface BarcodeIO
 {
-   /*
+   
    public boolean scan(BarcodeImage bc);
    public boolean readText(String text);
+   /*
    public boolean generateImageFromText();
    public boolean translateImageToText();
    */
@@ -203,7 +204,7 @@ class DataMatrix implements BarcodeIO
    public DataMatrix(BarcodeImage image)
    {
       this.text = "undefined";
-      scan(image);
+      this.scan(image);
    }
    
    public DataMatrix(String text)
@@ -214,17 +215,51 @@ class DataMatrix implements BarcodeIO
       actualHeight = 0;
    }
    
-   /*  
+   /* 
    public boolean generateImageFromText()
    {
       
    }
+   */
+   
    
    public boolean translateImageToText()
    {
-      
+      int jTotal = 0;
+      for(int i = 1; i < this.getActualWidth() - 1; i++)
+      {
+         for(int j = BarcodeImage.MAX_HEIGHT - 1; j > (BarcodeImage.MAX_HEIGHT - this.getActualHeight()); j--)
+         {
+            if(this.image.getPixel(i, j) == true)
+            {
+               switch(j)
+               {
+                  case 28: jTotal += 1;
+                           break;
+                  case 27: jTotal += 2;
+                           break;
+                  case 26: jTotal += 4;
+                           break;
+                  case 25: jTotal += 8;
+                           break;
+                  case 24: jTotal += 16;
+                           break;
+                  case 23: jTotal += 32;
+                           break;
+                  case 22: jTotal += 64;
+                           break;
+                  case 21: jTotal += 128;
+                           break;
+                  default: jTotal = 0;
+               }
+            }
+         }
+      System.out.print((char)jTotal);
+      jTotal = 0;
+      } 
+      return true;
    }
-   */
+   
    
    public void displayTextToConsole()
    {
@@ -252,26 +287,21 @@ class DataMatrix implements BarcodeIO
    
    
    
-   public void readText(String text)
+   public boolean readText(String text)
    {
       this.text = text;
+      return true;
    }
    
    
    
-   public void scan(BarcodeImage image)
+   public boolean scan(BarcodeImage image)
    {
       this.image = image.clone();
       this.cleanImage();
-      for(int i = 0; i < BarcodeImage.MAX_HEIGHT; i++)
-      {
-         System.out.println(getPixel(25,i));
-         if(image.getPixel(0 , i) == true)
-         {
-            System.out.println('!');
-            actualHeight++;
-         }
-      }
+      this.computeSignalWidth();
+      this.computeSignalHeight();
+      return true;
    }
    
    
@@ -314,15 +344,37 @@ class DataMatrix implements BarcodeIO
       return actualWidth;
    }
    
+   
    public int getActualHeight()
    {
       return actualHeight;
    }
    
-   //private int computeSignalWidth()
-   //{
-      
-   //}
+   
+   private int computeSignalWidth()
+   {
+      for(int i = 0; i < BarcodeImage.MAX_WIDTH; i++)
+      {
+         if(this.image.getPixel(i , BarcodeImage.MAX_HEIGHT - 1) == true)
+         {
+            actualWidth++;
+         }
+      }
+      return actualWidth;
+   }
+   
+   
+   private int computeSignalHeight()
+   {
+      for(int i = 0; i < BarcodeImage.MAX_HEIGHT; i++)
+      {
+         if(this.image.getPixel(0 , i) == true)
+         {
+            actualHeight++;
+         }
+      }
+      return actualHeight;
+   }
    
    
    
@@ -370,17 +422,16 @@ class DataMatrix implements BarcodeIO
       BarcodeImage testBar = new BarcodeImage(sImageIn);
       
       DataMatrix testDM = new DataMatrix(testBar);
-      testDM.displayTextToConsole();
-      System.out.println("-------------Test Image---------------");
-      testDM.displayImageToConsole();
-      System.out.println("\n\n-------------Test Image with string---------------\n\n");  
+      //testDM.displayTextToConsole();
+      //System.out.println("-------------Test Image---------------");
+      ////testDM.displayImageToConsole();
+      //System.out.println("\n\n-------------Test Image with string---------------\n\n");  
       DataMatrix testDmStr = new DataMatrix(testString);
-      testDmStr.displayTextToConsole();
-      testDmStr.displayImageToConsole(); 
-      System.out.println("\n\n-------------Test Image with shift---------------\n\n");  
+      //testDmStr.displayTextToConsole();
+      //testDmStr.displayImageToConsole(); 
+      //System.out.println("\n\n-------------Test Image with shift---------------\n\n");  
       testDM.displayImageToConsole();
-      System.out.print(testDM.getActualHeight());
-
+      testDM.translateImageToText();
       
    }   
 }
