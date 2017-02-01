@@ -14,7 +14,8 @@ public class Module4
 {
    public static void main(String[] args)
    {
-      BarcodeImage.Test();
+   //   BarcodeImage.Test();
+      DataMatrix.Test();
       
    }
 }
@@ -26,9 +27,10 @@ interface BarcodeIO
    public boolean readText(String text);
    public boolean generateImageFromText();
    public boolean translateImageToText();
+   */
    public void displayTextToConsole();
    public void displayImageToConsole();
-   */
+   
 }
 
 class BarcodeImage implements Cloneable
@@ -160,9 +162,9 @@ class BarcodeImage implements Cloneable
       BarcodeImage testClone;
       testClone = testArray.clone();
       testClone.displayToConsole();
-      System.out.println("Set Pixel in clone 11, 16 to: " + testClone.setPixel(11, 16, '-'));   
-      testClone.displayToConsole(); 
-      //tests to make sure that only clone is effected and not the original object
+      System.out.println("Set Pixel in clone 11, 16 to: " + testClone.setPixel(11, 16, '-'));
+      testClone.displayToConsole(); //tests to make sure that only clone is effected and not the original object
+      System.out.print("\n\n -----------------Test cloned object to make sure non altered--------------------\n\n");       
       testArray.displayToConsole();      
    }
    
@@ -180,9 +182,21 @@ class DataMatrix implements BarcodeIO
    
    public DataMatrix()
    {
-      text = "";
+      text = "undefined";
+      image = new BarcodeImage();
       actualWidth = 0;
       actualHeight = 0;
+   }
+   
+   public DataMatrix(BarcodeImage image)
+   {
+      this.text = "undefined";
+      this.image = image;
+   }
+   
+   public DataMatrix(String text)
+   {
+      
    }
    /*
    public boolean scan(BarcodeImage bc)
@@ -204,15 +218,53 @@ class DataMatrix implements BarcodeIO
    {
       
    }
+   */
    
    public void displayTextToConsole()
    {
-      
+      System.out.println(this.text);
    }
    
    public void displayImageToConsole()
    {
-      
+   for(int i = 0; i < BarcodeImage.MAX_HEIGHT; i++)
+   {
+      for(int j = 0; j < BarcodeImage.MAX_WIDTH; j++)
+      {
+         BarcodeImage.getPixel(i,j);
+      }
+      System.out.println(i);
+   } 
    }
-   */
+   
+   
+   
+   
+   public static void Test()
+   {
+      String[] sImageIn =
+      {
+         "                                               ",
+         "                                               ",
+         "                                               ",
+         "     * * * * * * * * * * * * * * * * * * * * * ",
+         "     *                                       * ",
+         "     ****** **** ****** ******* ** *** *****   ",
+         "     *     *    ****************************** ",
+         "     * **    * *        **  *    * * *   *     ",
+         "     *   *    *  *****    *   * *   *  **  *** ",
+         "     *  **     * *** **   **  *    **  ***  *  ",
+         "     ***  * **   **  *   ****    *  *  ** * ** ",
+         "     *****  ***  *  * *   ** ** **  *   * *    ",
+         "     ***************************************** ",  
+         "                                               ",
+         "                                               ",
+         "                                               "
+
+      };  
+      
+      DataMatrix testDM = new DataMatrix();
+      testDM.displayTextToConsole();
+      
+   }   
 }
