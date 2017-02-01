@@ -65,7 +65,20 @@ class BarcodeImage implements Cloneable
          }
       }
    }
+   
+
+   public BarcodeImage(BarcodeImage object)
+   {
+      BarcodeImage temp = new BarcodeImage();
       
+      for(int i = 0; i < MAX_HEIGHT; i++)
+      {
+         for(int j = 0; j < MAX_WIDTH; j++)
+         {
+            this.image_data[i][j] = object.image_data[i][j];
+         }
+      }   
+   }
    
    char getPixel(int row, int col)
    {
@@ -99,11 +112,18 @@ class BarcodeImage implements Cloneable
    }
    
    
+   public BarcodeImage clone()
+   {
+      return new BarcodeImage(this);
+   }
+   
+   
    public static void Test()
    {
       System.out.print("\n\n -----------------Test Default Constructor--------------------\n\n");
       BarcodeImage testImage = new BarcodeImage();
       testImage.displayToConsole();
+      
       
       String[] sImageIn =
       {
@@ -138,19 +158,16 @@ class BarcodeImage implements Cloneable
       System.out.println("Set Pixel 10, 16 to: " + testArray.setPixel(10, 16, '-'));
       testArray.displayToConsole();
 
+      System.out.print("\n\n -----------------Test clone()--------------------\n\n");    
+      BarcodeImage testClone;
+      testClone = testArray.clone();
+      testClone.displayToConsole();
+      System.out.println("Set Pixel in clone 11, 16 to: " + testClone.setPixel(11, 16, '-'));   
+      testClone.displayToConsole(); 
+      //tests to make sure that only clone is effected and not the original object
+      testArray.displayToConsole();      
    }
    
-   public Object clone()
-   {
-      try
-      {
-         return super.clone();
-      }
-      catch (CloneNotSupportedException e)
-      {
-         return null;
-      }
-   }
     
 }
 
@@ -163,7 +180,12 @@ class DataMatrix implements BarcodeIO
    private String text;
    private int actualWidth, actualHeight;
    
-   
+   public DataMatrix()
+   {
+      text = "";
+      actualWidth = 0;
+      actualHeight = 0;
+   }
    /*
    public boolean scan(BarcodeImage bc)
    {
