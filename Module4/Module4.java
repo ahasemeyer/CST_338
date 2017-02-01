@@ -14,7 +14,7 @@ public class Module4
 {
    public static void main(String[] args)
    {
-   //   BarcodeImage.Test();
+     // BarcodeImage.Test();
       DataMatrix.Test();
       
    }
@@ -191,12 +191,15 @@ class DataMatrix implements BarcodeIO
    public DataMatrix(BarcodeImage image)
    {
       this.text = "undefined";
-      this.image = image;
+      scan(image);
    }
    
    public DataMatrix(String text)
    {
-      
+      readText(text);
+      image = new BarcodeImage();
+      actualWidth = 0;
+      actualHeight = 0;
    }
    /*
    public boolean scan(BarcodeImage bc)
@@ -227,17 +230,45 @@ class DataMatrix implements BarcodeIO
    
    public void displayImageToConsole()
    {
-   for(int i = 0; i < BarcodeImage.MAX_HEIGHT; i++)
-   {
-      for(int j = 0; j < BarcodeImage.MAX_WIDTH; j++)
+      for(int i = 0; i < BarcodeImage.MAX_HEIGHT; i++)
       {
-         BarcodeImage.getPixel(i,j);
-      }
+         for(int j = 0; j < BarcodeImage.MAX_WIDTH; j++)
+         { 
+         System.out.print(image.getPixel(j, i));
+         }
       System.out.println(i);
-   } 
+      } 
    }
    
+   public void readText(String text)
+   {
+      this.text = text;
+   }
    
+   public void scan(BarcodeImage image)
+   {
+      this.image = image.clone();
+   }
+   
+   private void cleanImage()
+   {
+      
+   }
+   
+   private void moveImageToLowerLeft()
+   {
+      
+   }
+   
+   private void shiftImageDown(int offset)
+   {
+      
+   }
+   
+   private void shiftImageLeft(int offset)
+   {
+      
+   }
    
    
    public static void Test()
@@ -260,11 +291,18 @@ class DataMatrix implements BarcodeIO
          "                                               ",
          "                                               ",
          "                                               "
-
       };  
+      String testString = "It accepts strings";      
       
       DataMatrix testDM = new DataMatrix();
       testDM.displayTextToConsole();
+      System.out.println("-------------Test Image---------------");
+      testDM.displayImageToConsole();
+      System.out.println("\n\n-------------Test Image with string---------------\n\n");  
+      DataMatrix testDmStr = new DataMatrix(testString);
+      testDmStr.displayTextToConsole();
+      testDmStr.displayImageToConsole(); 
+      
       
    }   
 }
