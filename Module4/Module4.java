@@ -14,7 +14,7 @@ public class Module4
 {
    public static void main(String[] args)
    {
-     // BarcodeImage.Test();
+      //BarcodeImage.Test();
       DataMatrix.Test();
       
    }
@@ -38,7 +38,7 @@ class BarcodeImage implements Cloneable
    public static final int MAX_HEIGHT = 30;
    public static final int MAX_WIDTH = 65;
    
-   private char[][] image_data = new char[MAX_HEIGHT][MAX_WIDTH];;
+   private boolean[][] image_data = new boolean[MAX_HEIGHT][MAX_WIDTH];;
    
    public BarcodeImage()
    {
@@ -46,7 +46,7 @@ class BarcodeImage implements Cloneable
       {
          for(int j = 0; j < MAX_WIDTH; j++)
          {
-            image_data[i][j] = '*';
+            image_data[i][j] = false;
          }
       } 
    }
@@ -63,7 +63,14 @@ class BarcodeImage implements Cloneable
          charArray = str_data[i].toCharArray();
          for (int j = 0; j < charArray.length; j++)
          {
-            image_data[i + (MAX_HEIGHT - str_data.length)][j] = charArray[j];
+            if(charArray[j] == '*')
+            {
+            image_data[i + (MAX_HEIGHT - str_data.length)][j] = true;               
+            }
+            else
+            {
+            image_data[i + (MAX_HEIGHT - str_data.length)][j] = false;      
+            }
          }
       }
    }
@@ -80,7 +87,7 @@ class BarcodeImage implements Cloneable
       }   
    }
    
-   char getPixel(int row, int col)
+   boolean getPixel(int row, int col)
    {
       //if(row <= MAX_WIDTH && col <= MAX_HEIGHT)
       //{
@@ -89,7 +96,7 @@ class BarcodeImage implements Cloneable
 
    }
    
-   char setPixel(int row, int col, char value)
+   boolean setPixel(int row, int col, boolean value)
    {
       //needs condition
       return image_data[row][col] = value;
@@ -105,7 +112,12 @@ class BarcodeImage implements Cloneable
       {
          for(int j = 0; j < MAX_WIDTH; j++)
          {
-            System.out.print(image_data[i][j]);
+            if(image_data[i][j] == true)
+            {
+               System.out.print('*');
+            }
+            else
+               System.out.print(' ');
          }
          System.out.println(i);
       } 
@@ -155,14 +167,14 @@ class BarcodeImage implements Cloneable
       testArray.displayToConsole();
       
       System.out.print("\n\n -----------------Test setPixel--------------------\n\n");   
-      System.out.println("Set Pixel 10, 16 to: " + testArray.setPixel(10, 16, '-'));
+      System.out.println("Set Pixel 10, 16 to: " + testArray.setPixel(10, 16, true));
       testArray.displayToConsole();
 
       System.out.print("\n\n -----------------Test clone()--------------------\n\n");    
       BarcodeImage testClone;
       testClone = testArray.clone();
       testClone.displayToConsole();
-      System.out.println("Set Pixel in clone 11, 16 to: " + testClone.setPixel(11, 16, '-'));
+      System.out.println("Set Pixel in clone 11, 16 to: " + testClone.setPixel(11, 16, true));
       testClone.displayToConsole(); //tests to make sure that only clone is effected and not the original object
       System.out.print("\n\n -----------------Test cloned object to make sure non altered--------------------\n\n");       
       testArray.displayToConsole();      
@@ -234,7 +246,14 @@ class DataMatrix implements BarcodeIO
       {
          for(int j = 0; j < BarcodeImage.MAX_WIDTH; j++)
          { 
-         System.out.print(image.getPixel(j, i));
+         if(image.getPixel(j, i) == true)
+         {
+            System.out.print('*');
+         }
+         else
+         {
+            System.out.print(' ');
+         }
          }
       System.out.println(i);
       } 
@@ -262,7 +281,11 @@ class DataMatrix implements BarcodeIO
    
    private void shiftImageDown(int offset)
    {
-      
+      for(int i = 0; i < BarcodeImage.MAX_HEIGHT; i++)
+      {
+         for(int j = 0; j < BarcodeImage.MAX_WIDTH; j++)
+            
+      }
    }
    
    private void shiftImageLeft(int offset)
@@ -292,9 +315,10 @@ class DataMatrix implements BarcodeIO
          "                                               ",
          "                                               "
       };  
-      String testString = "It accepts strings";      
+      String testString = "It accepts strings";     
+      BarcodeImage testBar = new BarcodeImage(sImageIn);
       
-      DataMatrix testDM = new DataMatrix();
+      DataMatrix testDM = new DataMatrix(testBar);
       testDM.displayTextToConsole();
       System.out.println("-------------Test Image---------------");
       testDM.displayImageToConsole();
