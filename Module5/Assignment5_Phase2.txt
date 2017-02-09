@@ -59,13 +59,11 @@ public class Assignment5
     	  humanLabels[k] = new JLabel(GUICard.getIcon(generateRandomCard()));
       }
       
-		//pnlComputerHand = new JPanel();
-		//pnlComputerHand.setLayout(new GridLayout(1, numCardsPerHand));
-      
       for (k = 0; k < NUM_PLAYERS; k++)
       {
     	  playedCardLabels[k] = new JLabel(GUICard.getIcon(generateRandomCard()));
       }
+      
 	  playLabelText[0] = new JLabel("Computer", JLabel.CENTER);
 	  playLabelText[1] = new JLabel("You", JLabel.CENTER);
 	  
@@ -81,6 +79,7 @@ public class Assignment5
     	  myCardTable.pnlHumanHand.add(humanLabels[k]);
       }
       
+      // and two random cards in the play region (simulating a computer/hum ply)
       for (k = 0; k < NUM_PLAYERS; k++)
       {
     	  myCardTable.pnlPlayArea.add(playedCardLabels[k]);
