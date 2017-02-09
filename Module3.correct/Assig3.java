@@ -12,6 +12,7 @@ public class Assig3
    public static Scanner keyboardInput = new Scanner(System.in);
    public static void main(String[] args)
    {
+      /*
       /////////// Card Testing ////////////////
       
       //Check default constructor
@@ -89,30 +90,37 @@ public class Assig3
       
       
       /////////// Deck Testing ////////////////
+      */
       System.out.println("\n*************** Testing Deck Class *******************\n");
-      
-      //Create new deck of 2 packs
-      System.out.println("2 packs, unshuffled");
-      Deck myDeck = new Deck(2);
+      Card testCard = new Card('2', Card.Suit.HEARTS);
+      //Create new deck of 1 packs
+      System.out.println("1 packs, unshuffled");
+      Deck myDeck = new Deck(1);
+      myDeck.removeCard(testCard);
+      myDeck.addCard(testCard);
+      System.out.println(myDeck.getNumCards());
+      myDeck.sort();
       dealToScreen(myDeck);
+      System.out.println("\n****************add card**************************\n");
+      //System.out.println("\n******************remove card from deck******************\n");
       
       //Re-initialize deck with 2 packs, shuffle
-      System.out.println("2 packs, shuffled");
-      myDeck.init(2);
-      myDeck.shuffle();
-      dealToScreen(myDeck);
+      //System.out.println("2 packs, shuffled");
+      //myDeck.init(2);
+      //myDeck.shuffle();
+      //dealToScreen(myDeck);
 
       //Re-initialize deck with 1 pack
-      System.out.println("1 pack, unshuffled");
-      myDeck.init(1);
-      dealToScreen(myDeck);
+      //System.out.println("1 pack, unshuffled");
+      //myDeck.init(1);
+      //dealToScreen(myDeck);
 
       //Re-initialize deck with 1 pack, shuffle
-      System.out.println("1 pack, shuffled");
-      myDeck.init(1);
-      myDeck.shuffle();
-      dealToScreen(myDeck);
-      
+      //System.out.println("1 pack, shuffled");
+      //myDeck.init(1);
+      //myDeck.shuffle();
+      //dealToScreen(myDeck);
+      /*
       /////////// DECK & HAND TESTING ///////////////
       System.out.println("\n*************** Testing Hand & Deck *******************\n");
       myDeck.init(1);
@@ -134,6 +142,7 @@ public class Assig3
       myDeck.init(1);
       myDeck.shuffle();
       dealToHands(myDeck, numHands);
+      */
    } 
    
     //deal deck out to hands and display, for Deck/Hand test
@@ -182,6 +191,7 @@ public class Assig3
       }
       System.out.println(deckLineString);
    }
+   
 }   
 
 
@@ -191,8 +201,9 @@ public class Assig3
 class Card
 {
    public enum Suit{CLUBS, HEARTS, DIAMONDS, SPADES}; 
-   
+   public static char[] valueRanks = {'X', '2', '3', '4', '5', '6', '7', '8', '9', 'T', 'J', 'Q', 'K'};
    private char value;
+   private int intValue; 
    private Suit suit;
    private boolean errorFlag; 
 
@@ -214,7 +225,7 @@ class Card
       Suit[] possibleSuit = Suit.values(); //create an array with predefined values
       
        if (value == '1' || value == '2' || value == '3' || value == '4'|| value == '5'|| value == '6' || value == '7'
-            || value == '8' || value == '9' || value == 'T'|| value == 'J'|| value == 'K'|| value == 'Q'|| value == 'A')
+            || value == '8' || value == '9' || value == 'T'|| value == 'J'|| value == 'K'|| value == 'Q'|| value == 'A' || value == 'X')
       {
          for (int i = 0; i < possibleSuit.length; i++)
          {
@@ -227,6 +238,37 @@ class Card
    
       return isValid;
    }
+   
+   static void arraySort(Card[] card, int arraySize)
+   {
+      Card temp;        
+      
+      for(int i = 0; i < arraySize; i++)
+      {
+         for(int j = 0; j <  valueRanks.length; j++)
+         {
+            if(card[i].value == valueRanks[j])
+            {
+               card[i].intValue = j;
+               break;
+            }
+         }
+      }  
+         for(int i = 0; i < arraySize; i++)
+         {           
+            for(int j = 1; j < (arraySize - i); j++)
+            {
+               if(card[j - 1].intValue > card[j].intValue)
+               {
+                  temp = card[j-1];
+                  card[j - 1] = card[j];
+                  card[j] = temp;
+               }
+            }
+         }
+   }
+  
+   
    
    //sets values for priviate members and runs through to make sure isValid is good using isValid method
    public boolean set(char value, Suit suit)
@@ -303,6 +345,12 @@ class Hand
    public void resetHand()
    {
       numCards = 0;
+   }
+   
+   //sort the hand
+   public void sort()
+   {
+      Card.arraySort(myCards, myCards.length);
    }
    
    //adds a card to the next available position giving player a new card in hand
@@ -385,10 +433,10 @@ class Deck
    // Deck MEMBERS
    
    //6 packs of 52 cards max
-   public final int MAX_CARDS = 312; 
+   public final int MAX_CARDS = 336; 
    
    //To refer to instead of creating new instances of cards for each deck
-   private static Card[] masterPack = new Card[52];
+   private static Card[] masterPack = new Card[56];
    
    //cards in deck, with topCard referring to the "card on top". Refers to cards from masterPack
    private Card[] cards;
@@ -414,11 +462,53 @@ class Deck
    
    // Deck METHODS
    
+   public boolean addCard(Card card)
+   {
+      Card temp;
+      temp = cards[topCard];
+      cards[topCard + 1] = new Card();
+      cards[topCard + 1] = card;
+      topCard++;
+      
+      return true;
+   }
+   
+   public boolean removeCard(Card card)
+   {
+      Card temp;
+      
+      for(int i = 0; i < topCard; i++)
+      {
+         if(cards[i].getValue() == card.getValue() && cards[i].getSuit() == card.getSuit())
+         {         
+            temp = this.cards[i];
+            cards[i] = this.cards[topCard];
+            this.cards[topCard] = temp;
+            
+            this.cards[topCard] = null;
+            topCard--;
+         }
+      }
+      return true;
+   }
+   
+   public void sort()
+   {
+      Card.arraySort(cards, getNumCards());
+   }
+   
+   public int getNumCards()
+   {
+      int numCards = topCard;
+      return numCards + 1;
+   }
+   
+   
    //initializes deck with references to cards in masterPack for given number of packs
    public void init(int numPacks)
    {
       //get number of cards and lower to max if needed
-      int numCards = numPacks * 52;
+      int numCards = numPacks * 56;
       if(numCards > MAX_CARDS)
          numCards = MAX_CARDS;
       cards = new Card[numCards];
@@ -426,7 +516,7 @@ class Deck
       //fill with references to cards in masterPack
       for(int i = 0; i < numCards; i++)
       {
-         cards[i] = masterPack[i % 52];
+         cards[i] = masterPack[i % 56];
       }
       
       //set the top of the deck
@@ -493,7 +583,7 @@ class Deck
       for(int suit = 0; suit < 4; suit++)
       {
          //cycle through the 13 card value options
-         for(int val = 0; val < 13; val++)
+         for(int val = 0; val < 14; val++)
          {
             // get card value character
             switch(val)
@@ -512,6 +602,9 @@ class Deck
                   break;
                case 12:
                   cardVal = 'K';
+                  break;
+               case 13:
+                  cardVal = 'X';
                   break;
                default:
                   cardVal = (char)(val + 49);
